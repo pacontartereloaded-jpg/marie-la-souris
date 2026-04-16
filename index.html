@@ -1639,31 +1639,6 @@ window.addEventListener('scroll', () => {
   if (heroMouseWrap) heroMouseWrap.style.transform = `translateY(${y * .12}px)`;
 }, { passive: true });
 
-/* ──────────────────────────────────────────────────
-   8. TYPEWRITER ON HERO H1 (first load only)
-────────────────────────────────────────────────── */
-(function typeWriter() {
-  const el = heroH1;
-  if (!el) return;
-  const full = el.innerHTML;
-  el.innerHTML = '';
-  const stripped = full.replace(/<[^>]+>/g, '');
-  let i = 0;
-  const cursor = document.createElement('span');
-  cursor.style.cssText = 'border-right:2px solid var(--rose);margin-left:1px;animation:blink .7s step-end infinite';
-  el.appendChild(cursor);
-  const style = document.createElement('style');
-  style.textContent = '@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}';
-  document.head.appendChild(style);
-  const iv = setInterval(() => {
-    cursor.before(stripped[i++] || '');
-    if (i > stripped.length) {
-      clearInterval(iv);
-      cursor.remove();
-      el.innerHTML = full; // restore HTML entities / line breaks
-    }
-  }, 48);
-})();
 
 /* ──────────────────────────────────────────────────
    SCROLL REVEAL

@@ -29,6 +29,8 @@ const T = {
     'pli.desc2':      'Des illustrations colorées pour aider les petits à identifier et exprimer leurs émotions. Un support précieux pour les parents et les éducateurs.',
     'pli.desc3':      'Un jeu de mémoire avec de jolis animaux illustrés à imprimer et découper. Stimule la concentration et la mémoire visuelle dès 3 ans.',
     'feat.desc1':     "Un outil doux et visuel pour aider votre enfant à organiser sa routine matinale en toute autonomie. Idéal pour les 2–6 ans.",
+    'intro.welcome':  'Bienvenue ♥',
+    'intro.skip':     'Passer',
     'stat.families':  'Familles',
     'stat.products':  'Produits',
     'stat.happy':     '% Satisfaits',
@@ -106,6 +108,8 @@ const T = {
     'pli.desc2':      'Ilustraciones coloridas para ayudar a los pequeños a identificar y expresar sus emociones. Un recurso valioso para padres y educadores.',
     'pli.desc3':      'Un juego de memoria con lindos animales ilustrados para imprimir y recortar. Estimula la concentración y la memoria visual desde los 3 años.',
     'feat.desc1':     'Una herramienta suave y visual para ayudar a tu hijo a organizar su rutina matutina con autonomía. Ideal para los 2–6 años.',
+    'intro.welcome':  'Bienvenida ♥',
+    'intro.skip':     'Saltar',
     'stat.families':  'Familias',
     'stat.products':  'Productos',
     'stat.happy':     '% Satisfechos',
@@ -183,6 +187,8 @@ const T = {
     'pli.desc2':      'Colorful illustrations to help little ones identify and express their emotions. A precious resource for parents and educators.',
     'pli.desc3':      'A memory game with beautiful illustrated animals to print and cut out. Stimulates concentration and visual memory from age 3.',
     'feat.desc1':     'A gentle visual tool to help your child organize their morning routine independently. Perfect for ages 2–6.',
+    'intro.welcome':  'Welcome ♥',
+    'intro.skip':     'Skip',
     'stat.families':  'Families',
     'stat.products':  'Products',
     'stat.happy':     '% Satisfied',
@@ -422,6 +428,56 @@ function changeQty(index, delta) {
 }
 
 document.addEventListener('DOMContentLoaded', () => { injectCartDrawer(); updateBadge(); injectWishDrawer(); updateWishBadge(); });
+
+/* ──────────────────────────────────────────────────
+   INTRO SCREEN
+────────────────────────────────────────────────── */
+(function initIntro() {
+  const intro = document.getElementById('siteIntro');
+  if (!intro) return;
+
+  // Skip if already seen this session
+  if (sessionStorage.getItem('mls_intro_seen')) {
+    intro.remove(); return;
+  }
+
+  // Spawn floating petals
+  const colors = ['#E8B4B0','#9DB8A8','#C4A882','#F5D6C8'];
+  for (let i = 0; i < 14; i++) {
+    const p = document.createElement('div');
+    p.className = 'intro-petal';
+    const size = 5 + Math.random() * 8;
+    p.style.cssText = [
+      `left:${8 + Math.random() * 84}%`,
+      `top:${10 + Math.random() * 70}%`,
+      `width:${size}px`, `height:${size}px`,
+      `background:${colors[Math.floor(Math.random()*colors.length)]}`,
+      `animation-duration:${2.5 + Math.random() * 3}s`,
+      `animation-delay:${Math.random() * 2}s`,
+      `border-radius:${Math.random()>.5?'50% 0 50% 0':'50%'}`,
+    ].join(';');
+    intro.appendChild(p);
+  }
+
+  function dismiss() {
+    sessionStorage.setItem('mls_intro_seen', '1');
+    intro.classList.add('running');
+    setTimeout(() => intro.remove(), 750);
+  }
+
+  // Auto-dismiss after 4.2s
+  const timer = setTimeout(dismiss, 4200);
+
+  // Skip button
+  const skip = document.getElementById('introSkip');
+  if (skip) skip.addEventListener('click', () => { clearTimeout(timer); dismiss(); });
+
+  // Also click anywhere on intro to skip
+  intro.addEventListener('click', (e) => {
+    if (e.target === skip) return;
+    clearTimeout(timer); dismiss();
+  });
+})();
 
 /* ──────────────────────────────────────────────────
    WISHLIST DRAWER

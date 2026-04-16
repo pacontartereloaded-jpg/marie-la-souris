@@ -461,8 +461,8 @@ document.addEventListener('DOMContentLoaded', () => { injectCartDrawer(); update
 
   function dismiss() {
     sessionStorage.setItem('mls_intro_seen', '1');
-    intro.classList.add('running');
-    setTimeout(() => intro.remove(), 750);
+    intro.classList.add('dismissing');
+    setTimeout(() => intro.remove(), 720);
   }
 
   // Auto-dismiss after 4.2s

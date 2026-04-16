@@ -286,24 +286,34 @@
       to   { opacity:1; transform: translateY(0) rotate(0deg) scale(1); }
     }
 
-    /* ── RUNNING MOUSE ───────────────────────────── */
+    /* ── RUNNING MOUSE SPRITE ───────────────────── */
     .running-mouse {
       position: absolute;
-      top: -28px;
-      left: -60px;
-      width: 52px;
+      top: -44px;
+      left: -96px;
+      width: 96px;
+      height: 96px;
       pointer-events: none;
       z-index: 10;
       opacity: 0;
+      background-image: url('mice/mouse-run-sprite.png');
+      background-size: 1152px 96px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
     }
-    .running-mouse img { width: 100%; }
     .running-mouse.run {
-      animation: mouseRun 1.4s cubic-bezier(.4,0,.2,1) forwards;
+      animation:
+        mouseRun  1.6s cubic-bezier(.3,0,.7,1) forwards,
+        runCycle   .5s steps(12) infinite;
     }
     @keyframes mouseRun {
-      0%   { left: -60px; opacity: 1; }
-      85%  { opacity: 1; }
-      100% { left: calc(100% + 20px); opacity: 0; }
+      0%   { left: -96px; opacity: 1; }
+      88%  { opacity: 1; }
+      100% { left: calc(100% + 30px); opacity: 0; }
+    }
+    @keyframes runCycle {
+      from { background-position: 0 0; }
+      to   { background-position: -1152px 0; }
     }
 
     /* ── 1. FLOATING MOUSE ───────────────────────── */
@@ -958,7 +968,7 @@
     <span class="hd" style="top:72%;right:23%;font-size:.62rem;opacity:.4;color:var(--brown-fade)">&#10022;</span>
 
     <div style="position:relative;width:100%">
-      <div class="running-mouse" id="runningMouse"><img src="mice/mouse-02.png" alt=""/></div>
+      <div class="running-mouse" id="runningMouse"></div>
       <h1 data-i18n="hero.h1" style="position:relative">Petites mains,<br/>grandes découvertes</h1>
     </div>
     <p data-i18n="hero.sub">Jouer, apprendre et sourire avec Marie la Souris</p>
@@ -1583,8 +1593,9 @@ function animateH1() {
   const rawHTML = heroH1.innerHTML;
   // Wrap each character (preserving <br/> tags) in animated spans
   let charIdx = 0;
-  heroH1.innerHTML = rawHTML.replace(/(<br\s*\/?>)|([^<])/g, (match, br, ch) => {
-    if (br) return br;
+  heroH1.innerHTML = rawHTML.replace(/(<br\s*\/?>)|( )|([^<])/g, (match, br, space, ch) => {
+    if (br)    return br;
+    if (space) return '&nbsp;'; // preserve spaces without wrapping in inline-block
     const delay = charIdx++ * 42;
     return `<span class="h1-letter" style="animation-delay:${delay}ms">${ch}</span>`;
   });

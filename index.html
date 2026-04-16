@@ -289,15 +289,15 @@
     /* ── RUNNING MOUSE SPRITE ───────────────────── */
     .running-mouse {
       position: absolute;
-      top: -44px;
-      left: -96px;
-      width: 96px;
-      height: 96px;
+      top: -50px;
+      left: -110px;
+      width: 110px;
+      height: 90px;
       pointer-events: none;
       z-index: 10;
       opacity: 0;
       background-image: url('mice/mouse-run-sprite.png');
-      background-size: 1152px 96px;
+      background-size: 1320px 90px;
       background-repeat: no-repeat;
       background-position: 0 0;
     }
@@ -307,13 +307,13 @@
         runCycle   .5s steps(12) infinite;
     }
     @keyframes mouseRun {
-      0%   { left: -96px; opacity: 1; }
+      0%   { left: -110px; opacity: 1; }
       88%  { opacity: 1; }
       100% { left: calc(100% + 30px); opacity: 0; }
     }
     @keyframes runCycle {
       from { background-position: 0 0; }
-      to   { background-position: -1152px 0; }
+      to   { background-position: -1320px 0; }
     }
 
     /* ── 1. FLOATING MOUSE ───────────────────────── */

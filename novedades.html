@@ -51,65 +51,62 @@
   <p data-i18n="prod.new.sub">Les dernières créations de Marie la Souris ✨</p>
 </div>
 
-<section class="products">
-  <div class="prod-grid">
+<!-- Featured product (big) -->
+<section style="background:var(--cream);padding-top:3.5rem;">
+  <div class="featured-wrap">
 
-    <div class="prod-card reveal">
-      <div class="prod-img">
-        <img src="img/product-cartes.jpg" alt="Cartes Routine" loading="lazy"/>
-        <span class="pbadge" data-i18n="badge.new">Nouveau</span>
-        <button class="pwish">&#9829;</button>
+    <div class="featured-card reveal">
+      <div class="featured-img">
+        <img src="img/product-cartes.jpg" alt="Cartes Routine du Matin" loading="lazy"/>
       </div>
-      <div class="prod-info">
-        <div class="prod-name">Cartes Routine du Matin</div>
+      <div class="featured-info">
+        <span class="featured-tag" data-i18n="badge.new">Nouveau</span>
+        <h2>Cartes Routine du Matin</h2>
+        <p>Un outil doux et visuel pour aider votre enfant à organiser sa routine matinale en toute autonomie. Idéal pour les 2-6 ans.</p>
         <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
-        <div class="prod-bottom">
-          <span class="prod-price">USD $4.99</span>
-          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+        <div class="featured-bottom">
+          <span class="featured-price">USD $4.99</span>
+          <button class="btn-rose" onclick="addCart()" style="padding:.6rem 1.5rem;font-size:.82rem;">&#128717; Ajouter</button>
         </div>
       </div>
     </div>
 
-    <div class="prod-card reveal">
-      <div class="prod-img">
-        <img src="img/product-emotions.jpg" alt="Cartes Émotions" loading="lazy"/>
-        <span class="pbadge" data-i18n="badge.new">Nouveau</span>
-        <button class="pwish">&#9829;</button>
-      </div>
-      <div class="prod-info">
-        <div class="prod-name">Cartes des &Eacute;motions</div>
-        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
-        <div class="prod-bottom">
-          <span class="prod-price">USD $6.99</span>
-          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+    <!-- 2 smaller products -->
+    <div class="new-grid-2">
+
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img src="img/product-emotions.jpg" alt="Cartes Émotions" loading="lazy"/>
+          <span class="pbadge" data-i18n="badge.new">Nouveau</span>
+          <button class="pwish">&#9829;</button>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Cartes des &Eacute;motions</div>
+          <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+          <div class="prod-bottom">
+            <span class="prod-price">USD $6.99</span>
+            <button class="prod-fav" onclick="addCart()">&#9829;</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="prod-card reveal">
-      <div class="prod-img">
-        <img src="img/product-memory.jpg" alt="Jeu Memory" loading="lazy"/>
-        <span class="pbadge" data-i18n="badge.new">Nouveau</span>
-        <button class="pwish">&#9829;</button>
-      </div>
-      <div class="prod-info">
-        <div class="prod-name">Jeu Memory Animaux</div>
-        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
-        <div class="prod-bottom">
-          <span class="prod-price">USD $7.99</span>
-          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img src="img/product-memory.jpg" alt="Jeu Memory" loading="lazy"/>
+          <span class="pbadge" data-i18n="badge.new">Nouveau</span>
+          <button class="pwish">&#9829;</button>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Jeu Memory Animaux</div>
+          <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+          <div class="prod-bottom">
+            <span class="prod-price">USD $7.99</span>
+            <button class="prod-fav" onclick="addCart()">&#9829;</button>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
-  <div class="prod-floral">
-    <svg width="200" height="28" viewBox="0 0 200 28" xmlns="http://www.w3.org/2000/svg">
-      <path d="M18,14 Q60,4 100,14 Q140,24 182,14" stroke="#9DB8A8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <circle cx="44" cy="8" r="2.5" fill="#E8B4B0"/>
-      <circle cx="100" cy="14" r="2.5" fill="#E8B4B0"/>
-      <circle cx="156" cy="8" r="2.5" fill="#E8B4B0"/>
-    </svg>
+    </div>
   </div>
 </section>
 

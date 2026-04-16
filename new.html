@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Imprimables — Marie la Souris</title>
+  <title>Nouveautés — Marie la Souris</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -14,18 +14,18 @@
 <nav>
   <div class="nav-inner">
     <ul class="nav-left">
-      <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
-      <li><a href="tienda.html" data-i18n="nav.shop">Boutique</a></li>
-      <li><a href="novedades.html" data-i18n="nav.new">Nouveautés</a></li>
-      <li><a href="imprimables.html" data-i18n="nav.printables" style="color:var(--rose)">Imprimables</a></li>
-      <li><a href="educativo.html" data-i18n="nav.edu">Éducatif</a></li>
+      <li><a href="/" data-i18n="nav.home">Accueil</a></li>
+      <li><a href="/shop" data-i18n="nav.shop">Boutique</a></li>
+      <li><a href="/new" data-i18n="nav.new" style="color:var(--rose)">Nouveautés</a></li>
+      <li><a href="/printables" data-i18n="nav.printables">Imprimables</a></li>
+      <li><a href="/about" data-i18n="nav.edu">Éducatif</a></li>
     </ul>
     <div class="nav-center">
       <img class="nav-mouse" src="img/mouse-logo-nobg.png" alt="Marie la Souris" />
-      <a href="index.html" class="nav-brand">Marie la Souris</a>
+      <a href="/" class="nav-brand">Marie la Souris</a>
     </div>
     <div class="nav-right">
-      <a class="nav-blog" href="faq.html" data-i18n="nav.blog">Blog</a>
+      <a class="nav-blog" href="/faq" data-i18n="nav.blog">Blog</a>
       <div class="lang-sw">
         <button class="lang-btn" data-lang="fr">FR</button>
         <span class="lang-sep">|</span>
@@ -45,60 +45,68 @@
   </div>
 </nav>
 
-<div class="page-header" style="background:var(--pink-bg)">
-  <p class="breadcrumb"><a href="index.html">Accueil</a> / <span data-i18n="nav.printables">Imprimables</span></p>
-  <h1 data-i18n="prod.print.title">Imprimables</h1>
-  <p data-i18n="prod.print.sub">Téléchargez, imprimez et jouez ! &#129516;</p>
+<div class="page-header">
+  <p class="breadcrumb"><a href="/">Accueil</a> / <span data-i18n="nav.new">Nouveautés</span></p>
+  <h1 data-i18n="prod.new.title">Nouveautés</h1>
+  <p data-i18n="prod.new.sub">Les dernières créations de Marie la Souris ✨</p>
 </div>
 
-<section style="background:var(--cream-white);padding-top:3.5rem;">
-  <div class="prod-list">
+<!-- Featured product (big) -->
+<section style="background:var(--cream);padding-top:3.5rem;">
+  <div class="featured-wrap">
 
-    <div class="pli reveal">
-      <div class="pli-img">
+    <div class="featured-card reveal">
+      <div class="featured-img">
         <img src="img/product-cartes.jpg" alt="Cartes Routine du Matin" loading="lazy"/>
       </div>
-      <div class="pli-info">
-        <span class="pli-tag">&#128196; PDF · Téléchargement instantané</span>
-        <h3>Cartes Routine du Matin</h3>
-        <p>Un outil doux et visuel pour aider votre enfant à organiser sa routine matinale en toute autonomie. Idéal pour les enfants de 2 à 6 ans.</p>
-        <div class="pli-bottom">
-          <span class="pli-price">USD $4.99</span>
-          <button class="btn-rose" onclick="addCart()" style="padding:.55rem 1.3rem;font-size:.8rem;">&#128717; Ajouter au panier</button>
+      <div class="featured-info">
+        <span class="featured-tag" data-i18n="badge.new">Nouveau</span>
+        <h2>Cartes Routine du Matin</h2>
+        <p>Un outil doux et visuel pour aider votre enfant à organiser sa routine matinale en toute autonomie. Idéal pour les 2-6 ans.</p>
+        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+        <div class="featured-bottom">
+          <span class="featured-price">USD $4.99</span>
+          <button class="btn-rose" onclick="addCart()" style="padding:.6rem 1.5rem;font-size:.82rem;">&#128717; Ajouter</button>
         </div>
       </div>
     </div>
 
-    <div class="pli reveal">
-      <div class="pli-img">
-        <img src="img/product-emotions.jpg" alt="Cartes des Émotions" loading="lazy"/>
-      </div>
-      <div class="pli-info">
-        <span class="pli-tag">&#128196; PDF · Téléchargement instantané</span>
-        <h3>Cartes des &Eacute;motions</h3>
-        <p>Des illustrations colorées pour aider les petits à identifier et exprimer leurs émotions. Un support précieux pour les parents et les éducateurs.</p>
-        <div class="pli-bottom">
-          <span class="pli-price">USD $6.99</span>
-          <button class="btn-rose" onclick="addCart()" style="padding:.55rem 1.3rem;font-size:.8rem;">&#128717; Ajouter au panier</button>
+    <!-- 2 smaller products -->
+    <div class="new-grid-2">
+
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img src="img/product-emotions.jpg" alt="Cartes Émotions" loading="lazy"/>
+          <span class="pbadge" data-i18n="badge.new">Nouveau</span>
+          <button class="pwish">&#9829;</button>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Cartes des &Eacute;motions</div>
+          <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+          <div class="prod-bottom">
+            <span class="prod-price">USD $6.99</span>
+            <button class="prod-fav" onclick="addCart()">&#9829;</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="pli reveal">
-      <div class="pli-img">
-        <img src="img/product-memory.jpg" alt="Jeu Memory Animaux" loading="lazy"/>
-      </div>
-      <div class="pli-info">
-        <span class="pli-tag">&#128196; PDF · Téléchargement instantané</span>
-        <h3>Jeu Memory Animaux</h3>
-        <p>Un jeu de mémoire avec de jolis animaux illustrés à imprimer et découper. Stimule la concentration et la mémoire visuelle dès 3 ans.</p>
-        <div class="pli-bottom">
-          <span class="pli-price">USD $7.99</span>
-          <button class="btn-rose" onclick="addCart()" style="padding:.55rem 1.3rem;font-size:.8rem;">&#128717; Ajouter au panier</button>
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img src="img/product-memory.jpg" alt="Jeu Memory" loading="lazy"/>
+          <span class="pbadge" data-i18n="badge.new">Nouveau</span>
+          <button class="pwish">&#9829;</button>
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Jeu Memory Animaux</div>
+          <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+          <div class="prod-bottom">
+            <span class="prod-price">USD $7.99</span>
+            <button class="prod-fav" onclick="addCart()">&#9829;</button>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
@@ -129,18 +137,18 @@
     <div class="ft-col">
       <h5 data-i18n="ft.shop">Boutique</h5>
       <ul>
-        <li><a href="tienda.html" data-i18n="ft.all">Tous les produits</a></li>
-        <li><a href="novedades.html" data-i18n="ft.new">Nouveautés</a></li>
-        <li><a href="imprimables.html" data-i18n="ft.printables">Imprimables</a></li>
+        <li><a href="/shop" data-i18n="ft.all">Tous les produits</a></li>
+        <li><a href="/new" data-i18n="ft.new">Nouveautés</a></li>
+        <li><a href="/printables" data-i18n="ft.printables">Imprimables</a></li>
         <li><a href="#contacto" data-i18n="ft.promo">Promotions</a></li>
       </ul>
     </div>
     <div class="ft-col">
       <h5 data-i18n="ft.help">Aide</h5>
       <ul>
-        <li><a href="faq.html" data-i18n="ft.faq">FAQ</a></li>
-        <li><a href="faq.html" data-i18n="ft.delivery">Livraison</a></li>
-        <li><a href="faq.html" data-i18n="ft.returns">Retours</a></li>
+        <li><a href="/faq" data-i18n="ft.faq">FAQ</a></li>
+        <li><a href="/faq" data-i18n="ft.delivery">Livraison</a></li>
+        <li><a href="/faq" data-i18n="ft.returns">Retours</a></li>
         <li><a href="#contacto" data-i18n="ft.contact">Contact</a></li>
       </ul>
     </div>

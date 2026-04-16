@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nouveautés — Marie la Souris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+      <li><a href="tienda.html" data-i18n="nav.shop">Boutique</a></li>
+      <li><a href="novedades.html" data-i18n="nav.new" style="color:var(--rose)">Nouveautés</a></li>
+      <li><a href="imprimables.html" data-i18n="nav.printables">Imprimables</a></li>
+      <li><a href="educativo.html" data-i18n="nav.edu">Éducatif</a></li>
+    </ul>
+    <div class="nav-center">
+      <img class="nav-mouse" src="img/mouse-logo-nobg.png" alt="Marie la Souris" />
+      <a href="index.html" class="nav-brand">Marie la Souris</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-blog" href="faq.html" data-i18n="nav.blog">Blog</a>
+      <div class="lang-sw">
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="nav-search">
+        <span class="nav-search-icon">&#128269;</span>
+        <input type="text" data-i18n-placeholder="nav.search" placeholder="Rechercher..." />
+      </div>
+      <div class="nav-icons">
+        <button class="ni">&#9825;</button>
+        <button class="ni">&#128717;<span class="cart-badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="index.html">Accueil</a> / <span data-i18n="nav.new">Nouveautés</span></p>
+  <h1 data-i18n="prod.new.title">Nouveautés</h1>
+  <p data-i18n="prod.new.sub">Les dernières créations de Marie la Souris ✨</p>
+</div>
+
+<section class="products">
+  <div class="prod-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="img/product-cartes.jpg" alt="Cartes Routine" loading="lazy"/>
+        <span class="pbadge" data-i18n="badge.new">Nouveau</span>
+        <button class="pwish">&#9829;</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Cartes Routine du Matin</div>
+        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+        <div class="prod-bottom">
+          <span class="prod-price">USD $4.99</span>
+          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="img/product-emotions.jpg" alt="Cartes Émotions" loading="lazy"/>
+        <span class="pbadge" data-i18n="badge.new">Nouveau</span>
+        <button class="pwish">&#9829;</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Cartes des &Eacute;motions</div>
+        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+        <div class="prod-bottom">
+          <span class="prod-price">USD $6.99</span>
+          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="img/product-memory.jpg" alt="Jeu Memory" loading="lazy"/>
+        <span class="pbadge" data-i18n="badge.new">Nouveau</span>
+        <button class="pwish">&#9829;</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Jeu Memory Animaux</div>
+        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+        <div class="prod-bottom">
+          <span class="prod-price">USD $7.99</span>
+          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="prod-floral">
+    <svg width="200" height="28" viewBox="0 0 200 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18,14 Q60,4 100,14 Q140,24 182,14" stroke="#9DB8A8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <circle cx="44" cy="8" r="2.5" fill="#E8B4B0"/>
+      <circle cx="100" cy="14" r="2.5" fill="#E8B4B0"/>
+      <circle cx="156" cy="8" r="2.5" fill="#E8B4B0"/>
+    </svg>
+  </div>
+</section>
+
+<section class="newsletter" id="contacto">
+  <div class="nl-left reveal">
+    <h2 data-i18n="nl.title">Imprimable Gratuit</h2>
+    <p data-i18n="nl.sub">Recevez un joli imprimable offert en vous inscrivant à notre newsletter!</p>
+    <form class="nl-form" onsubmit="handleNL(event)">
+      <input type="email" data-i18n-placeholder="nl.email" placeholder="Email adresse" required />
+      <button type="submit" class="btn-rose" style="white-space:nowrap;padding:.65rem 1.4rem;font-size:.82rem;" data-i18n="nl.btn">T&eacute;l&eacute;charger</button>
+    </form>
+  </div>
+  <div class="nl-right">
+    <img src="img/newsletter-img.jpg" alt="Flashcards Marie la Souris" loading="lazy"/>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-logo">Marie la Souris</div>
+      <p data-i18n="ft.about">Matériel didactique fait avec amour pour les familles et les enseignants qui croient au pouvoir du jeu.</p>
+      <div class="socials">
+        <button class="sb">&#128247;</button><button class="sb">&#128280;</button>
+        <button class="sb">&#128204;</button><button class="sb">&#127925;</button>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.shop">Boutique</h5>
+      <ul>
+        <li><a href="tienda.html" data-i18n="ft.all">Tous les produits</a></li>
+        <li><a href="novedades.html" data-i18n="ft.new">Nouveautés</a></li>
+        <li><a href="imprimables.html" data-i18n="ft.printables">Imprimables</a></li>
+        <li><a href="#contacto" data-i18n="ft.promo">Promotions</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.help">Aide</h5>
+      <ul>
+        <li><a href="faq.html" data-i18n="ft.faq">FAQ</a></li>
+        <li><a href="faq.html" data-i18n="ft.delivery">Livraison</a></li>
+        <li><a href="faq.html" data-i18n="ft.returns">Retours</a></li>
+        <li><a href="#contacto" data-i18n="ft.contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.legal">Légal</h5>
+      <ul>
+        <li><a href="#" data-i18n="ft.terms">CGV</a></li>
+        <li><a href="#" data-i18n="ft.privacy">Confidentialité</a></li>
+        <li><a href="#" data-i18n="ft.cookies">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span data-i18n="ft.copy">&copy; 2026 Marie la Souris &mdash; Tous droits r&eacute;serv&eacute;s</span>
+    <span data-i18n="ft.made">Fait avec &#9829; pour les tout-petits</span>
+  </div>
+</footer>
+
+<div class="peek" id="pL"></div>
+<div class="peek" id="pR"></div>
+<div class="peek" id="pBL"></div>
+<div class="peek" id="pBR"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

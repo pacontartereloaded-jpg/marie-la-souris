@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Marie la Souris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+      <li><a href="tienda.html" data-i18n="nav.shop">Boutique</a></li>
+      <li><a href="novedades.html" data-i18n="nav.new">Nouveautés</a></li>
+      <li><a href="imprimables.html" data-i18n="nav.printables">Imprimables</a></li>
+      <li><a href="educativo.html" data-i18n="nav.edu">Éducatif</a></li>
+    </ul>
+    <div class="nav-center">
+      <img class="nav-mouse" src="img/mouse-logo-nobg.png" alt="Marie la Souris" />
+      <a href="index.html" class="nav-brand">Marie la Souris</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-blog" href="faq.html" data-i18n="nav.blog" style="color:var(--rose)">Blog</a>
+      <div class="lang-sw">
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="nav-search">
+        <span class="nav-search-icon">&#128269;</span>
+        <input type="text" data-i18n-placeholder="nav.search" placeholder="Rechercher..." />
+      </div>
+      <div class="nav-icons">
+        <button class="ni">&#9825;</button>
+        <button class="ni">&#128717;<span class="cart-badge" id="cartBadge">0</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="faq-section">
+  <div class="sec-head reveal">
+    <h2 data-i18n="faq.title">Questions fréquentes</h2>
+    <p data-i18n="faq.sub">Tout ce que vous devez savoir avant de commencer ✨</p>
+  </div>
+  <div class="faq-wrap">
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q1">À qui s'adressent vos produits ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a1">Nos produits sont conçus pour les enfants de 2 à 7 ans, mais ils conviennent également aux enseignants, éducateurs et tout parent souhaitant enrichir le quotidien de son enfant.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q2">Vos produits sont-ils numériques ou physiques ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a2">Tous nos produits sont des fichiers numériques (PDF) à télécharger et imprimer chez vous. Vous recevez le fichier immédiatement après l'achat, à imprimer autant de fois que vous le souhaitez !</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q3">Comment reçois-je ma commande ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a3">Dès le paiement validé, vous recevez automatiquement un lien de téléchargement par email dans les minutes qui suivent. Vérifiez vos spams si vous ne le voyez pas !</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q4">Puis-je imprimer plusieurs exemplaires ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a4">Oui ! Une fois acheté, le fichier vous appartient pour un usage personnel. Vous pouvez l'imprimer autant de fois que nécessaire pour votre famille ou votre classe.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q5">Quels modes de paiement acceptez-vous ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a5">Nous acceptons les cartes bancaires (Visa, Mastercard, American Express) ainsi que PayPal. Tous les paiements sont sécurisés.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q6">Y a-t-il des produits gratuits ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a6">Oui ! Inscrivez-vous à notre newsletter et recevez un joli imprimable offert directement dans votre boîte mail. C'est notre façon de vous dire bienvenue &#9829;</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="newsletter" id="contacto">
+  <div class="nl-left reveal">
+    <h2 data-i18n="nl.title">Imprimable Gratuit</h2>
+    <p data-i18n="nl.sub">Recevez un joli imprimable offert en vous inscrivant à notre newsletter!</p>
+    <form class="nl-form" onsubmit="handleNL(event)">
+      <input type="email" data-i18n-placeholder="nl.email" placeholder="Email adresse" required />
+      <button type="submit" class="btn-rose" style="white-space:nowrap;padding:.65rem 1.4rem;font-size:.82rem;" data-i18n="nl.btn">T&eacute;l&eacute;charger</button>
+    </form>
+  </div>
+  <div class="nl-right">
+    <img src="img/newsletter-img.jpg" alt="Flashcards Marie la Souris" loading="lazy"/>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-logo">Marie la Souris</div>
+      <p data-i18n="ft.about">Matériel didactique fait avec amour pour les familles et les enseignants qui croient au pouvoir du jeu.</p>
+      <div class="socials">
+        <button class="sb">&#128247;</button><button class="sb">&#128280;</button>
+        <button class="sb">&#128204;</button><button class="sb">&#127925;</button>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.shop">Boutique</h5>
+      <ul>
+        <li><a href="tienda.html" data-i18n="ft.all">Tous les produits</a></li>
+        <li><a href="novedades.html" data-i18n="ft.new">Nouveautés</a></li>
+        <li><a href="imprimables.html" data-i18n="ft.printables">Imprimables</a></li>
+        <li><a href="#contacto" data-i18n="ft.promo">Promotions</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.help">Aide</h5>
+      <ul>
+        <li><a href="faq.html" data-i18n="ft.faq">FAQ</a></li>
+        <li><a href="faq.html" data-i18n="ft.delivery">Livraison</a></li>
+        <li><a href="faq.html" data-i18n="ft.returns">Retours</a></li>
+        <li><a href="#contacto" data-i18n="ft.contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.legal">Légal</h5>
+      <ul>
+        <li><a href="#" data-i18n="ft.terms">CGV</a></li>
+        <li><a href="#" data-i18n="ft.privacy">Confidentialité</a></li>
+        <li><a href="#" data-i18n="ft.cookies">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span data-i18n="ft.copy">&copy; 2026 Marie la Souris &mdash; Tous droits r&eacute;serv&eacute;s</span>
+    <span data-i18n="ft.made">Fait avec &#9829; pour les tout-petits</span>
+  </div>
+</footer>
+
+<div class="peek" id="pL"></div>
+<div class="peek" id="pR"></div>
+<div class="peek" id="pBL"></div>
+<div class="peek" id="pBR"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

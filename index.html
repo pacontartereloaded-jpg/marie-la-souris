@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marie la Souris — Jouets & Imprimables Éducatifs</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon-mouse.svg"/>
   <!-- v3 -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -805,7 +806,7 @@
       </div>
       <div class="nav-icons">
         <button class="ni" title="Favoris">&#9825;</button>
-        <button class="ni" title="Panier">
+        <button class="ni" title="Panier" onclick="openCart()">
           &#128717;
           <span class="cart-badge" id="cartBadge">0</span>
         </button>
@@ -1391,19 +1392,6 @@ function setLang(l) {
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => setLang(btn.dataset.lang));
 });
-
-/* ──────────────────────────────────────────────────
-   CART
-────────────────────────────────────────────────── */
-let cartN = 0;
-const cartBadge = document.getElementById('cartBadge');
-
-function addCart() {
-  cartN++;
-  cartBadge.textContent = cartN;
-  cartBadge.style.transform = 'scale(1.5)';
-  setTimeout(() => cartBadge.style.transform = '', 280);
-}
 
 /* ──────────────────────────────────────────────────
    NEWSLETTER

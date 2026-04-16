@@ -287,11 +287,6 @@ function injectCartDrawer() {
       </div>
     </div>
   `);
-  document.querySelectorAll('.ni[title="Panier"], .ni').forEach(btn => {
-    if (btn.textContent.includes('🛒') || btn.innerHTML.includes('128717')) {
-      btn.onclick = openCart;
-    }
-  });
 }
 
 function openCart() {

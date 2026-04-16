@@ -372,7 +372,114 @@ function changeQty(index, delta) {
   renderCart();
 }
 
-document.addEventListener('DOMContentLoaded', () => { injectCartDrawer(); updateBadge(); });
+document.addEventListener('DOMContentLoaded', () => { injectCartDrawer(); updateBadge(); injectWishDrawer(); updateWishBadge(); });
+
+/* ──────────────────────────────────────────────────
+   WISHLIST DRAWER
+────────────────────────────────────────────────── */
+let wish = JSON.parse(localStorage.getItem('mls_wish') || '[]');
+
+function saveWish() { localStorage.setItem('mls_wish', JSON.stringify(wish)); }
+
+const wishLabels = {
+  fr: { title:'Mes favoris', empty:'Aucun favori pour le moment ♥', toCart:'Ajouter au panier', remove:'✕' },
+  es: { title:'Mis favoritos', empty:'Sin favoritos por ahora ♥', toCart:'Añadir al carrito', remove:'✕' },
+  en: { title:'My wishlist', empty:'No favourites yet ♥', toCart:'Add to cart', remove:'✕' },
+};
+
+function injectWishDrawer() {
+  if (document.getElementById('wishDrawer')) return;
+  document.body.insertAdjacentHTML('beforeend', `
+    <div class="wish-overlay" id="wishOverlay" onclick="closeWishlist()"></div>
+    <div class="wish-drawer" id="wishDrawer">
+      <div class="wish-head">
+        <h3 id="wishTitle">Mes favoris</h3>
+        <button class="wish-close" onclick="closeWishlist()">&#10005;</button>
+      </div>
+      <div class="wish-body" id="wishBody"></div>
+    </div>
+  `);
+  syncWishButtons();
+}
+
+function openWishlist() {
+  document.getElementById('wishOverlay').classList.add('open');
+  document.getElementById('wishDrawer').classList.add('open');
+  renderWish();
+}
+
+function closeWishlist() {
+  document.getElementById('wishOverlay').classList.remove('open');
+  document.getElementById('wishDrawer').classList.remove('open');
+}
+
+function updateWishBadge() {
+  document.querySelectorAll('#wishBadge').forEach(b => {
+    b.textContent = wish.length;
+    b.style.transform = 'scale(1.5)';
+    setTimeout(() => b.style.transform = '', 280);
+  });
+}
+
+function syncWishButtons() {
+  document.querySelectorAll('.pwish[data-name]').forEach(btn => {
+    const name = btn.dataset.name;
+    btn.classList.toggle('wished', wish.some(w => w.name === name));
+  });
+}
+
+function renderWish() {
+  const lbl = wishLabels[lang] || wishLabels.fr;
+  const body = document.getElementById('wishBody');
+  document.getElementById('wishTitle').textContent = lbl.title;
+
+  if (wish.length === 0) {
+    body.innerHTML = `<div class="wish-empty"><div class="wish-empty-icon">♡</div><p>${lbl.empty}</p></div>`;
+    return;
+  }
+
+  body.innerHTML = wish.map((item, i) => `
+    <div class="wish-item">
+      <div class="wish-item-img"><img src="${item.img}" alt="${item.name}"/></div>
+      <div class="wish-item-info">
+        <div class="wish-item-name">${item.name}</div>
+        <div class="wish-item-price">USD $${item.price.toFixed(2)}</div>
+        <div class="wish-item-actions">
+          <button class="wish-to-cart" onclick="wishToCart(${i})">${lbl.toCart}</button>
+          <button class="wish-item-remove" onclick="removeWish(${i})">✕</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addWishlist(name, price, img) {
+  const exists = wish.some(w => w.name === name);
+  if (exists) {
+    wish = wish.filter(w => w.name !== name);
+  } else {
+    wish.push({ name, price: parseFloat(price), img });
+  }
+  saveWish();
+  updateWishBadge();
+  syncWishButtons();
+  openWishlist();
+}
+
+function removeWish(index) {
+  wish.splice(index, 1);
+  saveWish();
+  updateWishBadge();
+  syncWishButtons();
+  renderWish();
+}
+
+function wishToCart(index) {
+  const item = wish[index];
+  addCart(item.name, item.price, item.img);
+  removeWish(index);
+  closeWishlist();
+}
 
 /* ──────────────────────────────────────────────────
    NEWSLETTER

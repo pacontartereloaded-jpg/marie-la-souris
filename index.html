@@ -805,7 +805,7 @@
         <input type="text" data-i18n-placeholder="nav.search" placeholder="Rechercher..." />
       </div>
       <div class="nav-icons">
-        <button class="ni" title="Favoris">&#9825;</button>
+        <button class="ni" title="Favoris" onclick="openWishlist()" style="position:relative">&#9825;<span class="wish-badge" id="wishBadge">0</span></button>
         <button class="ni" title="Panier" onclick="openCart()">
           &#128717;
           <span class="cart-badge" id="cartBadge">0</span>
@@ -922,7 +922,7 @@
       <div class="prod-img">
         <img src="img/product-cartes.jpg" alt="Cartes Routine" loading="lazy"/>
         <span class="pbadge" data-i18n="badge.new">Nouveau</span>
-        <button class="pwish">&#9829;</button>
+        <button class="pwish" data-name="Cartes Routine du Matin" onclick="addWishlist('Cartes Routine du Matin',4.99,'img/product-cartes.jpg')">&#9829;</button>
       </div>
       <div class="prod-info">
         <div class="prod-name">Cartes Routine du Matin</div>
@@ -937,7 +937,7 @@
     <div class="prod-card reveal">
       <div class="prod-img">
         <img src="img/product-emotions.jpg" alt="Cartes Émotions" loading="lazy"/>
-        <button class="pwish">&#9829;</button>
+        <button class="pwish" data-name="Cartes des Émotions" onclick="addWishlist('Cartes des Émotions',6.99,'img/product-emotions.jpg')">&#9829;</button>
       </div>
       <div class="prod-info">
         <div class="prod-name">Cartes des &Eacute;motions</div>
@@ -952,7 +952,7 @@
     <div class="prod-card reveal">
       <div class="prod-img">
         <img src="img/product-memory.jpg" alt="Jeu Memory" loading="lazy"/>
-        <button class="pwish">&#9829;</button>
+        <button class="pwish" data-name="Jeu Memory Animaux" onclick="addWishlist('Jeu Memory Animaux',7.99,'img/product-memory.jpg')">&#9829;</button>
       </div>
       <div class="prod-info">
         <div class="prod-name">Jeu Memory Animaux</div>

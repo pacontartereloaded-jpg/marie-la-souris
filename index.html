@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marie la Souris — Jouets & Imprimables Éducatifs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS ──────────────────────────── */
+    :root {
+      --cream:        #F5EAE0;
+      --cream-light:  #FBF6F1;
+      --cream-white:  #FDFAF7;
+      --pink:         #E8B4B0;
+      --pink-light:   #F2D8D5;
+      --pink-bg:      #EFD5D0;
+      --rose:         #B8807C;
+      --rose-hover:   #A06E6A;
+      --sage:         #9DB8A8;
+      --sage-badge:   #7FA595;
+      --taupe:        #C4B2A8;
+      --brown:        #4A3728;
+      --brown-mid:    #8B6552;
+      --brown-fade:   #B89880;
+    }
+
+    /* ── RESET ───────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul  { list-style: none; }
+
+    /* ── NAVIGATION ──────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: var(--cream-white);
+      border-bottom: 1px solid rgba(74,55,40,.09);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: .35rem 2.5rem .5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 1.7rem;
+    }
+    .nav-left a {
+      font-size: .74rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      transition: color .2s;
+    }
+    .nav-left a:hover { color: var(--brown); }
+
+    .nav-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .nav-mouse {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: -4px;
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      color: var(--brown);
+      white-space: nowrap;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.2rem;
+    }
+    .nav-blog {
+      font-size: .74rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      transition: color .2s;
+    }
+    .nav-blog:hover { color: var(--brown); }
+
+    /* Language switcher */
+    .lang-sw {
+      display: flex;
+      align-items: center;
+      gap: .2rem;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--taupe);
+      padding: .15rem .25rem;
+      transition: color .2s;
+      border-radius: 3px;
+    }
+    .lang-btn:hover { color: var(--brown); }
+    .lang-btn.active {
+      color: var(--rose);
+      border-bottom: 1.5px solid var(--rose);
+    }
+    .lang-sep { color: var(--taupe); font-size: .65rem; opacity: .7; }
+
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      background: var(--cream);
+      border: 1px solid var(--taupe);
+      border-radius: 999px;
+      padding: .3rem .85rem;
+    }
+    .nav-search input {
+      border: none;
+      background: transparent;
+      font-family: 'Lato', sans-serif;
+      font-size: .78rem;
+      color: var(--brown);
+      width: 100px;
+      outline: none;
+    }
+    .nav-search input::placeholder { color: var(--taupe); }
+    .nav-search-icon { color: var(--brown-fade); font-size: .8rem; }
+
+    .nav-icons { display: flex; gap: .75rem; }
+    .ni {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.05rem;
+      color: var(--brown-mid);
+      position: relative;
+      padding: 0;
+      transition: color .2s;
+    }
+    .ni:hover { color: var(--brown); }
+    .cart-badge {
+      position: absolute;
+      top: -5px; right: -7px;
+      width: 15px; height: 15px;
+      border-radius: 50%;
+      background: var(--rose);
+      color: #fff;
+      font-size: .58rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .25s;
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 38% 1fr;
+      min-height: 460px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 4rem 3rem 2.5rem;
+      position: relative;
+      background: var(--cream);
+    }
+    .hero-text h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--brown);
+      margin-bottom: .8rem;
+    }
+    .hero-text p {
+      font-size: .88rem;
+      color: var(--brown-mid);
+      letter-spacing: .02em;
+      margin-bottom: 1.7rem;
+    }
+
+    /* Floating hearts */
+    .hd {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      color: var(--pink);
+    }
+
+    /* ── Mouse hero — positioned absolutely over hero ── */
+    .hero-mouse-wrap {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: clamp(260px, 30vw, 420px);
+      z-index: 5;
+    }
+    .hero-mouse-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 16px 32px rgba(74,55,40,.2));
+    }
+
+    /* Botanical branch beside the mouse */
+    .hero-botanical {
+      position: absolute;
+      right: calc(1.5% + clamp(160px,18vw,240px));
+      bottom: 20%;
+      width: 70px;
+      opacity: .45;
+      z-index: 4;
+    }
+
+    /* Hero slide dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: .42rem;
+      z-index: 10;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--taupe);
+      opacity: .5;
+      cursor: pointer;
+    }
+    .dot.on { background: var(--rose); opacity: 1; }
+
+    /* ── BUTTON ──────────────────────────────────── */
+    .btn-rose {
+      display: inline-block;
+      background: var(--rose);
+      color: #fff;
+      padding: .72rem 1.9rem;
+      border-radius: 999px;
+      font-family: 'Lato', sans-serif;
+      font-size: .84rem;
+      letter-spacing: .04em;
+      border: none;
+      cursor: pointer;
+      transition: background .22s, transform .18s;
+    }
+    .btn-rose:hover {
+      background: var(--rose-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ── TAGLINE ─────────────────────────────────── */
+    .tagline {
+      background: var(--cream-white);
+      padding: 3.2rem 14rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .tagline h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 300;
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+      letter-spacing: .025em;
+    }
+    .sparks {
+      font-size: .68rem;
+      letter-spacing: .32em;
+      color: var(--brown-fade);
+      opacity: .55;
+      margin-bottom: 1.3rem;
+    }
+    .branch-svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 200px;
+      opacity: .62;
+    }
+    .branch-l { left: .8rem; }
+    .branch-r { right: .8rem; transform: translateY(-50%) scaleX(-1); }
+
+    /* ── PRODUCTS ────────────────────────────────── */
+    .products {
+      background: var(--cream);
+      padding: 4rem 2rem 4.5rem;
+    }
+    .sec-head {
+      text-align: center;
+      margin-bottom: 2.4rem;
+    }
+    .sec-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--brown);
+      margin-bottom: .3rem;
+    }
+    .sec-head p {
+      font-size: .87rem;
+      color: var(--brown-mid);
+    }
+
+    .prod-grid {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+    }
+
+    .prod-card {
+      cursor: pointer;
+      transition: transform .28s;
+    }
+    .prod-card:hover { transform: translateY(-6px); }
+
+    .prod-img {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: var(--cream-light);
+    }
+    .prod-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s;
+    }
+    .prod-card:hover .prod-img img { transform: scale(1.05); }
+
+    .pbadge {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: var(--sage-badge);
+      color: #fff;
+      font-size: .67rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: .22rem .65rem;
+      border-radius: 999px;
+    }
+    .pwish {
+      position: absolute;
+      top: 9px; right: 9px;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      color: var(--pink);
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+      transition: transform .2s;
+    }
+    .pwish:hover { transform: scale(1.18); }
+
+    .prod-info { padding: .85rem .15rem 0; }
+    .prod-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--brown);
+      margin-bottom: .3rem;
+    }
+    .prod-hearts {
+      color: var(--pink);
+      font-size: .7rem;
+      letter-spacing: .08em;
+      margin-bottom: .35rem;
+    }
+    .prod-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .prod-price {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .prod-fav {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--pink);
+      font-size: .9rem;
+      transition: transform .18s;
+    }
+    .prod-fav:hover { transform: scale(1.25); }
+
+    /* Floral divider */
+    .prod-floral {
+      text-align: center;
+      margin-top: 2.5rem;
+      opacity: .38;
+    }
+
+    /* ── NEWSLETTER ──────────────────────────────── */
+    .newsletter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 300px;
+    }
+    .nl-left {
+      background: var(--pink-bg);
+      padding: 4rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .nl-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+      font-weight: 400;
+      color: var(--brown);
+      margin-bottom: .6rem;
+    }
+    .nl-left p {
+      font-size: .87rem;
+      color: var(--brown-mid);
+      line-height: 1.65;
+      margin-bottom: 1.6rem;
+      max-width: 290px;
+    }
+    .nl-form {
+      display: flex;
+      gap: .6rem;
+      max-width: 360px;
+    }
+    .nl-form input {
+      flex: 1;
+      padding: .65rem 1.1rem;
+      border: 1px solid var(--taupe);
+      border-radius: 999px;
+      font-family: 'Lato', sans-serif;
+      font-size: .84rem;
+      background: #fff;
+      color: var(--brown);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .nl-form input:focus { border-color: var(--rose); }
+    .nl-form input::placeholder { color: var(--taupe); }
+
+    .nl-right {
+      overflow: hidden;
+    }
+    .nl-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 3.5rem 2.5rem 2rem;
+    }
+    .ft-grid {
+      max-width: 1100px;
+      margin: 0 auto 2.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .ft-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: .8rem;
+      color: var(--cream-light);
+    }
+    .ft-brand p {
+      font-size: .82rem;
+      color: var(--brown-fade);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .socials { display: flex; gap: .6rem; }
+    .sb {
+      width: 33px; height: 33px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      border: none;
+      cursor: pointer;
+      color: var(--cream);
+      font-size: .9rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .sb:hover { background: var(--rose); }
+    .ft-col h5 {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 1.1rem;
+    }
+    .ft-col li { margin-bottom: .6rem; }
+    .ft-col a {
+      font-size: .82rem;
+      color: var(--brown-fade);
+      transition: color .2s;
+    }
+    .ft-col a:hover { color: var(--cream); }
+    .ft-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .6rem;
+      font-size: .78rem;
+      color: var(--brown-fade);
+    }
+
+    /* ── PEEKING MICE ─────────────────────────────────────
+       <img> tags injected by JS. Strategy per edge:
+       • LEFT/RIGHT: show ~90% of mouse — only a sliver behind the wall.
+         RIGHT peeker flips the IMG (not the container) so transforms stay clean.
+       • BOTTOM: show top 75% (head visible for all orientations).
+       • TOP: show ~70% from below nav.
+       Pixel-based translate so % confusion is avoided.
+    ──────────────────────────────────────────────────── */
+    .peek {
+      position: fixed;
+      z-index: 800;
+      pointer-events: none;
+      transition: transform .85s cubic-bezier(.34,1.18,.64,1);
+    }
+    .peek img {
+      display: block;
+      height: auto;
+      filter: drop-shadow(0 6px 16px rgba(74,55,40,.22));
+    }
+
+    /* LEFT — slides in from left, only ~20px stays behind left wall */
+    #pL  { left: 0; top: 38%; width: 195px; transform: translateX(-200px); }
+    #pL img { width: 195px; }
+    #pL.show { transform: translateX(-20px); }
+
+    /* RIGHT — flip applied per-mouse by JS based on direction */
+    #pR  { right: 0; top: 52%; width: 195px; transform: translateX(200px); }
+    #pR img { width: 195px; }
+    #pR.show { transform: translateX(20px); }
+
+    /* BOTTOM-LEFT — slides up, shows top 75% of image (head area) */
+    #pBL { left: 12%; bottom: 0; width: 180px; transform: translateY(100%); }
+    #pBL img { width: 180px; }
+    #pBL.show { transform: translateY(25%); }
+
+    /* BOTTOM-RIGHT — same */
+    #pBR { right: 16%; bottom: 0; width: 180px; transform: translateY(100%); }
+    #pBR img { width: 180px; }
+    #pBR.show { transform: translateY(25%); }
+
+
+    /* ── SCROLL REVEAL ───────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { height: 260px; }
+      .hero-mouse-wrap { width: 150px; right: 1rem; }
+      .prod-grid { grid-template-columns: 1fr 1fr; }
+      .newsletter { grid-template-columns: 1fr; }
+      .nl-right { height: 240px; }
+      .ft-grid { grid-template-columns: 1fr 1fr; }
+      .tagline { padding: 3rem 5rem; }
+      .branch-svg { width: 130px; }
+    }
+    @media (max-width: 620px) {
+      .nav-left, .nav-blog, .nav-search { display: none; }
+      .nav-inner { grid-template-columns: auto 1fr auto; }
+      .nav-center { padding: 0 .5rem; }
+      .nav-mouse { width: 50px; height: 50px; }
+      .nav-brand { font-size: 1.1rem; }
+      .hero-text { padding: 2rem 1.5rem 4rem; }
+      .hero-text h1 { font-size: 1.9rem; }
+      .hero-mouse-wrap { width: 120px; }
+      .prod-grid { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
+      .nl-left { padding: 2.5rem 1.5rem; }
+      .nl-form { flex-direction: column; }
+      .ft-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .tagline { padding: 2.5rem 2rem; }
+      .branch-l, .branch-r { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ╔══════════════════════╗ -->
+<!-- ║      NAVIGATION      ║ -->
+<!-- ╚══════════════════════╝ -->
+<nav>
+  <div class="nav-inner">
+
+    <ul class="nav-left">
+      <li><a href="#" data-i18n="nav.home">Accueil</a></li>
+      <li><a href="#productos" data-i18n="nav.shop">Boutique</a></li>
+      <li><a href="#" data-i18n="nav.new">Nouveautés</a></li>
+      <li><a href="#" data-i18n="nav.printables">Imprimables</a></li>
+      <li><a href="#" data-i18n="nav.edu">Éducatif</a></li>
+    </ul>
+
+    <div class="nav-center">
+      <img class="nav-mouse" src="img/mouse-logo-nobg.png" alt="Marie la Souris" />
+      <div class="nav-brand">Marie la Souris</div>
+    </div>
+
+    <div class="nav-right">
+      <a class="nav-blog" href="#" data-i18n="nav.blog">Blog</a>
+
+      <!-- Language switcher -->
+      <div class="lang-sw">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+
+      <div class="nav-search">
+        <span class="nav-search-icon">&#128269;</span>
+        <input type="text" data-i18n-placeholder="nav.search" placeholder="Rechercher..." />
+      </div>
+      <div class="nav-icons">
+        <button class="ni" title="Favoris">&#9825;</button>
+        <button class="ni" title="Panier">
+          &#128717;
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- ╔══════════════════════╗ -->
+<!-- ║         HERO         ║ -->
+<!-- ╚══════════════════════╝ -->
+<section class="hero" id="inicio">
+
+  <!-- Photo left -->
+  <div class="hero-photo">
+    <img src="img/hero-basket.jpg" alt="Panier de jouets pédagogiques" />
+  </div>
+
+  <!-- Text right -->
+  <div class="hero-text">
+    <!-- Floating hearts decoration -->
+    <span class="hd" style="top:12%;left:6%;font-size:.9rem;opacity:.6">&#9829;</span>
+    <span class="hd" style="top:26%;left:3%;font-size:.62rem;opacity:.45">&#9829;</span>
+    <span class="hd" style="top:52%;left:8%;font-size:.7rem;opacity:.5">&#9829;</span>
+    <span class="hd" style="top:70%;left:3.5%;font-size:1rem;opacity:.45">&#9829;</span>
+    <span class="hd" style="top:18%;right:24%;font-size:.65rem;opacity:.42">&#9829;</span>
+    <span class="hd" style="top:40%;right:22%;font-size:.8rem;opacity:.38;color:var(--brown-fade)">&#10022;</span>
+    <span class="hd" style="top:72%;right:23%;font-size:.62rem;opacity:.4;color:var(--brown-fade)">&#10022;</span>
+
+    <h1 data-i18n="hero.h1">Petites mains,<br/>grandes découvertes</h1>
+    <p data-i18n="hero.sub">Jouer, apprendre et sourire avec Marie la Souris</p>
+    <a href="#productos" class="btn-rose" data-i18n="hero.btn">Découvrir nos produits</a>
+  </div>
+
+  <!-- Botanical branch (absolutely positioned near the mouse) -->
+  <svg class="hero-botanical" viewBox="0 0 70 130" xmlns="http://www.w3.org/2000/svg">
+    <path d="M35,125 Q24,90 16,68 Q8,45 21,16" stroke="#9DB8A8" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="18" cy="68" rx="9" ry="4"   fill="#9DB8A8" opacity=".58" transform="rotate(-37 18 68)"/>
+    <ellipse cx="13" cy="48" rx="8" ry="3.8" fill="#9DB8A8" opacity=".52" transform="rotate(-47 13 48)"/>
+    <ellipse cx="25" cy="85" rx="8" ry="3.8" fill="#9DB8A8" opacity=".48" transform="rotate(-27 25 85)"/>
+    <ellipse cx="30" cy="54" rx="7" ry="3.2" fill="#9DB8A8" opacity=".44" transform="rotate(12 30 54)"/>
+    <circle cx="21" cy="16" r="3"   fill="#E8B4B0" opacity=".85"/>
+    <circle cx="8"  cy="36" r="2"   fill="#E8B4B0" opacity=".7"/>
+    <circle cx="28" cy="28" r="1.8" fill="#E8B4B0" opacity=".65"/>
+  </svg>
+
+  <!-- Mouse — absolute, bottom-right of hero -->
+  <div class="hero-mouse-wrap">
+    <img src="img/mouse-hero-nobg.png" alt="Marie la Souris illustrée" />
+  </div>
+
+  <!-- Slide dots -->
+  <div class="hero-dots">
+    <div class="dot on"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+</section>
+
+
+<!-- ╔══════════════════════╗ -->
+<!-- ║       TAGLINE        ║ -->
+<!-- ╚══════════════════════╝ -->
+<section class="tagline">
+
+  <svg class="branch-svg branch-l" viewBox="0 0 200 72" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4,54 Q44,30 90,40 Q136,50 192,26" stroke="#9DB8A8" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <ellipse cx="40"  cy="33" rx="12" ry="5"   fill="#9DB8A8" opacity=".52" transform="rotate(-27 40 33)"/>
+    <ellipse cx="76"  cy="43" rx="12" ry="5"   fill="#9DB8A8" opacity=".48" transform="rotate(17 76 43)"/>
+    <ellipse cx="113" cy="36" rx="11" ry="4.5" fill="#9DB8A8" opacity=".48" transform="rotate(-11 113 36)"/>
+    <ellipse cx="153" cy="30" rx="10" ry="4.5" fill="#9DB8A8" opacity=".45" transform="rotate(-21 153 30)"/>
+    <circle cx="58"  cy="27" r="3.2" fill="#E8B4B0" opacity=".78"/>
+    <circle cx="133" cy="25" r="2.8" fill="#E8B4B0" opacity=".72"/>
+    <circle cx="184" cy="21" r="2.5" fill="#E8B4B0" opacity=".68"/>
+    <circle cx="96"  cy="30" r="1.8" fill="#E8B4B0" opacity=".58"/>
+  </svg>
+
+  <svg class="branch-svg branch-r" viewBox="0 0 200 72" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4,54 Q44,30 90,40 Q136,50 192,26" stroke="#9DB8A8" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <ellipse cx="40"  cy="33" rx="12" ry="5"   fill="#9DB8A8" opacity=".52" transform="rotate(-27 40 33)"/>
+    <ellipse cx="76"  cy="43" rx="12" ry="5"   fill="#9DB8A8" opacity=".48" transform="rotate(17 76 43)"/>
+    <ellipse cx="113" cy="36" rx="11" ry="4.5" fill="#9DB8A8" opacity=".48" transform="rotate(-11 113 36)"/>
+    <ellipse cx="153" cy="30" rx="10" ry="4.5" fill="#9DB8A8" opacity=".45" transform="rotate(-21 153 30)"/>
+    <circle cx="58"  cy="27" r="3.2" fill="#E8B4B0" opacity=".78"/>
+    <circle cx="133" cy="25" r="2.8" fill="#E8B4B0" opacity=".72"/>
+    <circle cx="184" cy="21" r="2.5" fill="#E8B4B0" opacity=".68"/>
+    <circle cx="96"  cy="30" r="1.8" fill="#E8B4B0" opacity=".58"/>
+  </svg>
+
+  <p class="sparks">+ + + + + + +</p>
+  <h2 data-i18n="tagline.h2">Jouer pour apprendre, grandir en douceur</h2>
+  <a href="#productos" class="btn-rose" style="font-size:.82rem;padding:.68rem 1.8rem;" data-i18n="tagline.btn">En savoir plus</a>
+
+</section>
+
+
+<!-- ╔══════════════════════╗ -->
+<!-- ║       PRODUCTS       ║ -->
+<!-- ╚══════════════════════╝ -->
+<section class="products" id="productos">
+
+  <div class="sec-head reveal">
+    <h2 data-i18n="prod.title">Nos coups de c&#339;ur</h2>
+    <p data-i18n="prod.sub">Apprendre tout en s'amusant &#129293;</p>
+  </div>
+
+  <div class="prod-grid">
+
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="img/product-cartes.jpg" alt="Cartes Routine" loading="lazy"/>
+        <span class="pbadge" data-i18n="badge.new">Nouveau</span>
+        <button class="pwish">&#9829;</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Cartes Routine du Matin</div>
+        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+        <div class="prod-bottom">
+          <span class="prod-price">USD $.99</span>
+          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="img/product-emotions.jpg" alt="Cartes Émotions" loading="lazy"/>
+        <button class="pwish">&#9829;</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Cartes des &Eacute;motions</div>
+        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+        <div class="prod-bottom">
+          <span class="prod-price">USD 6.99</span>
+          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card reveal">
+      <div class="prod-img">
+        <img src="img/product-memory.jpg" alt="Jeu Memory" loading="lazy"/>
+        <button class="pwish">&#9829;</button>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Jeu Memory Animaux</div>
+        <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
+        <div class="prod-bottom">
+          <span class="prod-price">USD 7.99</span>
+          <button class="prod-fav" onclick="addCart()">&#9829;</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="prod-floral">
+    <svg width="200" height="28" viewBox="0 0 200 28" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18,14 Q60,4 100,14 Q140,24 182,14" stroke="#9DB8A8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <circle cx="44"  cy="8"  r="2.5" fill="#E8B4B0"/>
+      <circle cx="100" cy="14" r="2.5" fill="#E8B4B0"/>
+      <circle cx="156" cy="8"  r="2.5" fill="#E8B4B0"/>
+    </svg>
+  </div>
+
+</section>
+
+
+<!-- ╔══════════════════════╗ -->
+<!-- ║      NEWSLETTER      ║ -->
+<!-- ╚══════════════════════╝ -->
+<section class="newsletter" id="contacto">
+
+  <div class="nl-left reveal">
+    <h2 data-i18n="nl.title">Imprimable Gratuit</h2>
+    <p data-i18n="nl.sub">Recevez un joli imprimable offert en vous inscrivant à notre newsletter!</p>
+    <form class="nl-form" onsubmit="handleNL(event)">
+      <input type="email" data-i18n-placeholder="nl.email" placeholder="Email adresse" required />
+      <button type="submit" class="btn-rose"
+              style="white-space:nowrap;padding:.65rem 1.4rem;font-size:.82rem;"
+              data-i18n="nl.btn">T&eacute;l&eacute;charger</button>
+    </form>
+  </div>
+
+  <div class="nl-right">
+    <img src="img/newsletter-img.jpg" alt="Flashcards Marie la Souris" loading="lazy"/>
+  </div>
+
+</section>
+
+
+<!-- ╔══════════════════════╗ -->
+<!-- ║        FOOTER        ║ -->
+<!-- ╚══════════════════════╝ -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-logo">Marie la Souris</div>
+      <p data-i18n="ft.about">Matériel didactique fait avec amour pour les familles et les enseignants qui croient au pouvoir du jeu.</p>
+      <div class="socials">
+        <button class="sb">&#128247;</button>
+        <button class="sb">&#128280;</button>
+        <button class="sb">&#128204;</button>
+        <button class="sb">&#127925;</button>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.shop">Boutique</h5>
+      <ul>
+        <li><a href="#" data-i18n="ft.all">Tous les produits</a></li>
+        <li><a href="#" data-i18n="ft.new">Nouveautés</a></li>
+        <li><a href="#" data-i18n="ft.printables">Imprimables</a></li>
+        <li><a href="#" data-i18n="ft.promo">Promotions</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.help">Aide</h5>
+      <ul>
+        <li><a href="#" data-i18n="ft.faq">FAQ</a></li>
+        <li><a href="#" data-i18n="ft.delivery">Livraison</a></li>
+        <li><a href="#" data-i18n="ft.returns">Retours</a></li>
+        <li><a href="#" data-i18n="ft.contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5 data-i18n="ft.legal">Légal</h5>
+      <ul>
+        <li><a href="#" data-i18n="ft.terms">CGV</a></li>
+        <li><a href="#" data-i18n="ft.privacy">Confidentialité</a></li>
+        <li><a href="#" data-i18n="ft.cookies">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span data-i18n="ft.copy">&copy; 2026 Marie la Souris &mdash; Tous droits r&eacute;serv&eacute;s</span>
+    <span data-i18n="ft.made">Fait avec &#9829; pour les tout-petits</span>
+  </div>
+</footer>
+
+
+<!-- ╔══════════════════════════════════════╗ -->
+<!-- ║   RATONCITOS ASOMÁNDOSE 🐭🐭🐭🐭🐭  ║ -->
+<!-- ╚══════════════════════════════════════╝ -->
+<!-- background-image set randomly by JS — mice/ folder, 15 transparent PNGs -->
+<div class="peek" id="pL" ></div>
+<div class="peek" id="pR" ></div>
+<div class="peek" id="pBL"></div>
+<div class="peek" id="pBR"></div>
+
+
+<!-- ═══════════════════ JAVASCRIPT ══════════════════ -->
+<script>
+/* ──────────────────────────────────────────────────
+   TRANSLATIONS
+────────────────────────────────────────────────── */
+const T = {
+  fr: {
+    'nav.home':       'Accueil',
+    'nav.shop':       'Boutique',
+    'nav.new':        'Nouveautés',
+    'nav.printables': 'Imprimables',
+    'nav.edu':        'Éducatif',
+    'nav.blog':       'Blog',
+    'nav.search':     'Rechercher...',
+    'hero.h1':        'Petites mains,<br/>grandes découvertes',
+    'hero.sub':       'Jouer, apprendre et sourire avec Marie la Souris',
+    'hero.btn':       'Découvrir nos produits',
+    'tagline.h2':     'Jouer pour apprendre, grandir en douceur',
+    'tagline.btn':    'En savoir plus',
+    'prod.title':     'Nos coups de c&#339;ur',
+    'prod.sub':       "Apprendre tout en s'amusant &#129293;",
+    'badge.new':      'Nouveau',
+    'nl.title':       'Imprimable Gratuit',
+    'nl.sub':         "Recevez un joli imprimable offert en vous inscrivant à notre newsletter!",
+    'nl.email':       'Email adresse',
+    'nl.btn':         'Télécharger',
+    'ft.about':       "Matériel didactique fait avec amour pour les familles et les enseignants qui croient au pouvoir du jeu.",
+    'ft.shop':        'Boutique',
+    'ft.all':         'Tous les produits',
+    'ft.new':         'Nouveautés',
+    'ft.printables':  'Imprimables',
+    'ft.promo':       'Promotions',
+    'ft.help':        'Aide',
+    'ft.faq':         'FAQ',
+    'ft.delivery':    'Livraison',
+    'ft.returns':     'Retours',
+    'ft.contact':     'Contact',
+    'ft.legal':       'Légal',
+    'ft.terms':       'CGV',
+    'ft.privacy':     'Confidentialité',
+    'ft.cookies':     'Cookies',
+    'ft.copy':        '© 2026 Marie la Souris — Tous droits réservés',
+    'ft.made':        'Fait avec &#9829; pour les tout-petits',
+  },
+
+  es: {
+    'nav.home':       'Inicio',
+    'nav.shop':       'Tienda',
+    'nav.new':        'Novedades',
+    'nav.printables': 'Imprimibles',
+    'nav.edu':        'Educativo',
+    'nav.blog':       'Blog',
+    'nav.search':     'Buscar...',
+    'hero.h1':        'Pequeñas manos,<br/>grandes descubrimientos',
+    'hero.sub':       'Jugar, aprender y sonreír con Marie la Souris',
+    'hero.btn':       'Descubrir productos',
+    'tagline.h2':     'Jugar para aprender, crecer con dulzura',
+    'tagline.btn':    'Saber más',
+    'prod.title':     'Nuestros favoritos',
+    'prod.sub':       'Aprender mientras te diviertes &#129293;',
+    'badge.new':      'Nuevo',
+    'nl.title':       'Imprimible Gratis',
+    'nl.sub':         '¡Recibe un imprimible especial al inscribirte en nuestra newsletter!',
+    'nl.email':       'Correo electrónico',
+    'nl.btn':         'Descargar',
+    'ft.about':       'Material didáctico hecho con amor para familias y docentes que creen en el poder del juego.',
+    'ft.shop':        'Tienda',
+    'ft.all':         'Todos los productos',
+    'ft.new':         'Novedades',
+    'ft.printables':  'Imprimibles',
+    'ft.promo':       'Promociones',
+    'ft.help':        'Ayuda',
+    'ft.faq':         'Preguntas frecuentes',
+    'ft.delivery':    'Envíos',
+    'ft.returns':     'Devoluciones',
+    'ft.contact':     'Contacto',
+    'ft.legal':       'Legal',
+    'ft.terms':       'Términos',
+    'ft.privacy':     'Privacidad',
+    'ft.cookies':     'Cookies',
+    'ft.copy':        '© 2026 Marie la Souris — Todos los derechos reservados',
+    'ft.made':        'Hecho con &#9829; para los más pequeños',
+  },
+
+  en: {
+    'nav.home':       'Home',
+    'nav.shop':       'Shop',
+    'nav.new':        'New',
+    'nav.printables': 'Printables',
+    'nav.edu':        'Educational',
+    'nav.blog':       'Blog',
+    'nav.search':     'Search...',
+    'hero.h1':        'Little hands,<br/>big discoveries',
+    'hero.sub':       'Play, learn and smile with Marie la Souris',
+    'hero.btn':       'Discover our products',
+    'tagline.h2':     'Play to learn, grow gently',
+    'tagline.btn':    'Learn more',
+    'prod.title':     'Our favorites',
+    'prod.sub':       'Learning while having fun &#129293;',
+    'badge.new':      'New',
+    'nl.title':       'Free Printable',
+    'nl.sub':         'Receive a lovely printable gift when you join our newsletter!',
+    'nl.email':       'Email address',
+    'nl.btn':         'Download',
+    'ft.about':       'Educational materials made with love for families and teachers who believe in the power of play.',
+    'ft.shop':        'Shop',
+    'ft.all':         'All products',
+    'ft.new':         'New arrivals',
+    'ft.printables':  'Printables',
+    'ft.promo':       'Sales',
+    'ft.help':        'Help',
+    'ft.faq':         'FAQ',
+    'ft.delivery':    'Shipping',
+    'ft.returns':     'Returns',
+    'ft.contact':     'Contact',
+    'ft.legal':       'Legal',
+    'ft.terms':       'Terms & Conditions',
+    'ft.privacy':     'Privacy Policy',
+    'ft.cookies':     'Cookies',
+    'ft.copy':        '© 2026 Marie la Souris — All rights reserved',
+    'ft.made':        'Made with &#9829; for little ones',
+  }
+};
+
+/* ──────────────────────────────────────────────────
+   LANGUAGE SWITCH
+────────────────────────────────────────────────── */
+let lang = 'fr';
+
+function setLang(l) {
+  lang = l;
+
+  // Update active button style
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === l);
+  });
+
+  // Update <html lang="">
+  document.documentElement.lang = l;
+
+  // Update all text elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = T[l][el.dataset.i18n];
+    if (val !== undefined) el.innerHTML = val;
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const val = T[l][el.dataset.i18nPlaceholder];
+    if (val !== undefined) el.placeholder = val;
+  });
+}
+
+// Attach language button listeners
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+/* ──────────────────────────────────────────────────
+   CART
+────────────────────────────────────────────────── */
+let cartN = 0;
+const cartBadge = document.getElementById('cartBadge');
+
+function addCart() {
+  cartN++;
+  cartBadge.textContent = cartN;
+  cartBadge.style.transform = 'scale(1.5)';
+  setTimeout(() => cartBadge.style.transform = '', 280);
+}
+
+/* ──────────────────────────────────────────────────
+   NEWSLETTER
+────────────────────────────────────────────────── */
+function handleNL(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  const labels = { fr: 'Merci! ♥', es: '¡Gracias! ♥', en: 'Thanks! ♥' };
+  btn.textContent = labels[lang] || 'Merci! ♥';
+  btn.style.background = '#87A899';
+  setTimeout(() => {
+    btn.innerHTML = T[lang]['nl.btn'];
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+/* ──────────────────────────────────────────────────
+   SCROLL REVEAL
+────────────────────────────────────────────────── */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -25px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ──────────────────────────────────────────────────
+   PEEKING MICE — orientation-aware system
+   dir: 'r' = faces right, 'l' = faces left, 'f' = front/symmetric
+   ok:  which peekers this mouse can appear in
+   Flip logic:
+     pL (left edge)  → wants mouse facing RIGHT into screen
+                       'l' mice get flipped, 'r'/'f' shown as-is
+     pR (right edge) → wants mouse facing LEFT into screen
+                       'r' mice get flipped, 'l'/'f' shown as-is
+     pBL/pBR         → no flip (vertical orientation, any pose OK)
+────────────────────────────────────────────────── */
+const MICE = [
+  { f:'mice/mouse-01.png', dir:'f', ok:['pL','pR','pBL','pBR'] }, // frente simétrico
+  { f:'mice/mouse-02.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // corre →
+  { f:'mice/mouse-03.png', dir:'l', ok:['pL','pR','pBL','pBR'] }, // duerme, cabeza ←
+  { f:'mice/mouse-04.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // parado, mira →
+  { f:'mice/mouse-05.png', dir:'l', ok:['pL','pR','pBL','pBR'] }, // parado, mira ←
+  { f:'mice/mouse-06.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // salta →
+  { f:'mice/mouse-07.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // sentado, mira →
+  { f:'mice/mouse-08.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // trepa →
+  { f:'mice/mouse-09.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // acostado →
+  { f:'mice/mouse-10.png', dir:'r', ok:['pL']                       }, // ya se asoma ←, solo izquierdo
+  { f:'mice/mouse-11.png', dir:'f', ok:['pL','pR','pBL','pBR'] }, // frente, saludando
+  { f:'mice/mouse-12.png', dir:'l', ok:['pL','pR','pBL','pBR'] }, // mira ←
+  { f:'mice/mouse-13.png', dir:'l', ok:['pL','pR','pBL','pBR'] }, // mira ←
+  { f:'mice/mouse-14.png', dir:'f', ok:['pL','pR','pBL','pBR'] }, // frente, corazón
+  { f:'mice/mouse-15.png', dir:'f', ok:['pBL','pBR']                }, // solo cabeza arriba, solo abajo
+  { f:'mice/mouse-16.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // sentado, corazón, mira →
+];
+
+const SHOW_MS = 6000;
+const MIN_GAP = 8000;
+const MAX_GAP = 15000;
+
+const lastUsed = {};
+
+function pickMouse(id) {
+  const pool = MICE.filter(m => m.ok.includes(id) && m.f !== lastUsed[id]);
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  lastUsed[id] = pick.f;
+  return pick;
+}
+
+function shouldFlip(id, dir) {
+  if (id === 'pL') return dir === 'l'; // flip left-facing so it looks right (into screen)
+  if (id === 'pR') return dir === 'r'; // flip right-facing so it looks left (into screen)
+  return false;
+}
+
+const peekCfg = [
+  { id: 'pL',  init: 2500  },
+  { id: 'pR',  init: 9000  },
+  { id: 'pBL', init: 15500 },
+  { id: 'pBR', init: 22000 },
+];
+
+function startPeek(id, initDelay) {
+  setTimeout(function loop() {
+    const el = document.getElementById(id);
+    let img = el.querySelector('img');
+    if (!img) { img = new Image(); img.alt = ''; el.appendChild(img); }
+    const mouse = pickMouse(id);
+    img.src = mouse.f;
+    img.style.transform = shouldFlip(id, mouse.dir) ? 'scaleX(-1)' : '';
+    el.classList.add('show');
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(loop, MIN_GAP + Math.random() * (MAX_GAP - MIN_GAP));
+    }, SHOW_MS);
+  }, initDelay);
+}
+
+peekCfg.forEach(p => startPeek(p.id, p.init));
+</script>
+
+</body>
+</html>

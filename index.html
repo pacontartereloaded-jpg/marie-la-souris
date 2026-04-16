@@ -651,6 +651,118 @@
       .tagline { padding: 2.5rem 2rem; }
       .branch-l, .branch-r { display: none; }
     }
+
+    /* ── NOTRE HISTOIRE ─────────────────────────── */
+    .historia {
+      padding: 5rem 2rem;
+      background: var(--cream-white);
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .historia-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      color: var(--brown);
+      margin-bottom: 1.2rem;
+      line-height: 1.25;
+    }
+    .historia-text p {
+      color: var(--brown-mid);
+      line-height: 1.85;
+      font-size: .97rem;
+      margin-bottom: 1rem;
+    }
+    .historia-text .btn-rose { margin-top: .8rem; display: inline-block; }
+    .historia-values {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .hist-val {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      border: 1px solid rgba(74,55,40,.06);
+    }
+    .hist-val-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+    .hist-val-text h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: .25rem;
+    }
+    .hist-val-text p { font-size: .88rem; color: var(--brown-mid); margin: 0; line-height: 1.6; }
+
+    /* ── FAQ ────────────────────────────────────── */
+    .faq-section {
+      padding: 5rem 2rem;
+      background: var(--cream);
+    }
+    .faq-section .sec-head { margin-bottom: 2.5rem; }
+    .faq-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .faq-item {
+      background: var(--cream-white);
+      border-radius: 12px;
+      border: 1px solid rgba(74,55,40,.07);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 1.1rem 1.4rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--brown);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q:hover { background: var(--cream); }
+    .faq-chevron {
+      font-size: .75rem;
+      color: var(--rose);
+      transition: transform .3s ease;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      padding: 0 1.4rem;
+      color: var(--brown-mid);
+      font-size: .93rem;
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 1.4rem 1.2rem; }
+
+    @media(max-width:768px) {
+      .historia { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -662,11 +774,11 @@
   <div class="nav-inner">
 
     <ul class="nav-left">
-      <li><a href="#" data-i18n="nav.home">Accueil</a></li>
+      <li><a href="#inicio" data-i18n="nav.home">Accueil</a></li>
       <li><a href="#productos" data-i18n="nav.shop">Boutique</a></li>
-      <li><a href="#" data-i18n="nav.new">Nouveautés</a></li>
-      <li><a href="#" data-i18n="nav.printables">Imprimables</a></li>
-      <li><a href="#" data-i18n="nav.edu">Éducatif</a></li>
+      <li><a href="#productos" data-i18n="nav.new">Nouveautés</a></li>
+      <li><a href="#productos" data-i18n="nav.printables">Imprimables</a></li>
+      <li><a href="#historia" data-i18n="nav.edu">Éducatif</a></li>
     </ul>
 
     <div class="nav-center">
@@ -675,7 +787,7 @@
     </div>
 
     <div class="nav-right">
-      <a class="nav-blog" href="#" data-i18n="nav.blog">Blog</a>
+      <a class="nav-blog" href="#contacto" data-i18n="nav.blog">Blog</a>
 
       <!-- Language switcher -->
       <div class="lang-sw">
@@ -814,7 +926,7 @@
         <div class="prod-name">Cartes Routine du Matin</div>
         <div class="prod-hearts">&#9829; &#9829; &#9829; &#9829; &#9829;</div>
         <div class="prod-bottom">
-          <span class="prod-price">USD $.99</span>
+          <span class="prod-price">USD $4.99</span>
           <button class="prod-fav" onclick="addCart()">&#9829;</button>
         </div>
       </div>
@@ -865,6 +977,109 @@
 
 
 <!-- ╔══════════════════════╗ -->
+<!-- ║   NOTRE HISTOIRE     ║ -->
+<!-- ╚══════════════════════╝ -->
+<section id="historia" style="background:var(--cream-white)">
+<div class="historia reveal">
+
+  <div class="historia-text">
+    <h2 data-i18n="hist.h2">Notre histoire ♥</h2>
+    <p data-i18n="hist.body1">Je suis Cote, une maman passionnée par l'éducation bienveillante et le jeu créatif. Marie la Souris est née de mon envie de créer du matériel pédagogique beau, accessible et efficace pour les enfants de 2 à 7 ans.</p>
+    <p data-i18n="hist.body2">Chaque carte, chaque jeu est pensé avec amour pour aider votre enfant à grandir en douceur, à son propre rythme, avec le sourire.</p>
+    <a href="#productos" class="btn-rose" data-i18n="hist.btn">Voir nos créations</a>
+  </div>
+
+  <div class="historia-values">
+    <div class="hist-val reveal">
+      <div class="hist-val-icon">🌿</div>
+      <div class="hist-val-text">
+        <h4 data-i18n="hist.v1t">Éducation bienveillante</h4>
+        <p data-i18n="hist.v1b">Des outils pensés pour respecter le rythme naturel de chaque enfant.</p>
+      </div>
+    </div>
+    <div class="hist-val reveal">
+      <div class="hist-val-icon">🎨</div>
+      <div class="hist-val-text">
+        <h4 data-i18n="hist.v2t">Design avec amour</h4>
+        <p data-i18n="hist.v2b">Chaque illustration est créée avec soin pour que l'apprentissage soit aussi joli que joyeux.</p>
+      </div>
+    </div>
+    <div class="hist-val reveal">
+      <div class="hist-val-icon">💡</div>
+      <div class="hist-val-text">
+        <h4 data-i18n="hist.v3t">Pédagogie active</h4>
+        <p data-i18n="hist.v3b">Jouer c'est apprendre. Nos jeux stimulent la curiosité, l'autonomie et la créativité.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ╔══════════════════════╗ -->
+<!-- ║         FAQ          ║ -->
+<!-- ╚══════════════════════╝ -->
+<section class="faq-section" id="faq">
+  <div class="sec-head reveal">
+    <h2 data-i18n="faq.title">Questions fréquentes</h2>
+    <p data-i18n="faq.sub">Tout ce que vous devez savoir avant de commencer ✨</p>
+  </div>
+  <div class="faq-wrap">
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q1">À qui s'adressent vos produits ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a1">Nos produits sont conçus pour les enfants de 2 à 7 ans, mais ils conviennent également aux enseignants, éducateurs et tout parent souhaitant enrichir le quotidien de son enfant.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q2">Vos produits sont-ils numériques ou physiques ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a2">Tous nos produits sont des fichiers numériques (PDF) à télécharger et imprimer chez vous. Vous recevez le fichier immédiatement après l'achat, à imprimer autant de fois que vous le souhaitez !</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q3">Comment reçois-je ma commande ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a3">Dès le paiement validé, vous recevez automatiquement un lien de téléchargement par email dans les minutes qui suivent. Vérifiez vos spams si vous ne le voyez pas !</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q4">Puis-je imprimer plusieurs exemplaires ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a4">Oui ! Une fois acheté, le fichier vous appartient pour un usage personnel. Vous pouvez l'imprimer autant de fois que nécessaire pour votre famille ou votre classe.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q5">Quels modes de paiement acceptez-vous ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a5">Nous acceptons les cartes bancaires (Visa, Mastercard, American Express) ainsi que PayPal. Tous les paiements sont sécurisés.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span data-i18n="faq.q6">Y a-t-il des produits gratuits ?</span>
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-a" data-i18n="faq.a6">Oui ! Inscrivez-vous à notre newsletter et recevez un joli imprimable offert directement dans votre boîte mail. C'est notre façon de vous dire bienvenue ♥</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════╗ -->
 <!-- ║      NEWSLETTER      ║ -->
 <!-- ╚══════════════════════╝ -->
 <section class="newsletter" id="contacto">
@@ -905,19 +1120,19 @@
     <div class="ft-col">
       <h5 data-i18n="ft.shop">Boutique</h5>
       <ul>
-        <li><a href="#" data-i18n="ft.all">Tous les produits</a></li>
-        <li><a href="#" data-i18n="ft.new">Nouveautés</a></li>
-        <li><a href="#" data-i18n="ft.printables">Imprimables</a></li>
-        <li><a href="#" data-i18n="ft.promo">Promotions</a></li>
+        <li><a href="#productos" data-i18n="ft.all">Tous les produits</a></li>
+        <li><a href="#productos" data-i18n="ft.new">Nouveautés</a></li>
+        <li><a href="#productos" data-i18n="ft.printables">Imprimables</a></li>
+        <li><a href="#contacto" data-i18n="ft.promo">Promotions</a></li>
       </ul>
     </div>
     <div class="ft-col">
       <h5 data-i18n="ft.help">Aide</h5>
       <ul>
-        <li><a href="#" data-i18n="ft.faq">FAQ</a></li>
-        <li><a href="#" data-i18n="ft.delivery">Livraison</a></li>
-        <li><a href="#" data-i18n="ft.returns">Retours</a></li>
-        <li><a href="#" data-i18n="ft.contact">Contact</a></li>
+        <li><a href="#faq" data-i18n="ft.faq">FAQ</a></li>
+        <li><a href="#faq" data-i18n="ft.delivery">Livraison</a></li>
+        <li><a href="#faq" data-i18n="ft.returns">Retours</a></li>
+        <li><a href="#contacto" data-i18n="ft.contact">Contact</a></li>
       </ul>
     </div>
     <div class="ft-col">
@@ -989,6 +1204,30 @@ const T = {
     'ft.cookies':     'Cookies',
     'ft.copy':        '© 2026 Marie la Souris — Tous droits réservés',
     'ft.made':        'Fait avec &#9829; pour les tout-petits',
+    'hist.h2':    'Notre histoire &#9829;',
+    'hist.body1': "Je suis Cote, une maman passionnée par l'éducation bienveillante et le jeu créatif. Marie la Souris est née de mon envie de créer du matériel pédagogique beau, accessible et efficace pour les enfants de 2 à 7 ans.",
+    'hist.body2': "Chaque carte, chaque jeu est pensé avec amour pour aider votre enfant à grandir en douceur, à son propre rythme, avec le sourire.",
+    'hist.btn':   'Voir nos créations',
+    'hist.v1t':   'Éducation bienveillante',
+    'hist.v1b':   'Des outils pensés pour respecter le rythme naturel de chaque enfant.',
+    'hist.v2t':   'Design avec amour',
+    'hist.v2b':   "Chaque illustration est créée avec soin pour que l'apprentissage soit aussi joli que joyeux.",
+    'hist.v3t':   'Pédagogie active',
+    'hist.v3b':   "Jouer c'est apprendre. Nos jeux stimulent la curiosité, l'autonomie et la créativité.",
+    'faq.title':  'Questions fréquentes',
+    'faq.sub':    'Tout ce que vous devez savoir avant de commencer ✨',
+    'faq.q1':     "À qui s'adressent vos produits ?",
+    'faq.a1':     "Nos produits sont conçus pour les enfants de 2 à 7 ans, mais ils conviennent également aux enseignants, éducateurs et tout parent souhaitant enrichir le quotidien de son enfant.",
+    'faq.q2':     "Vos produits sont-ils numériques ou physiques ?",
+    'faq.a2':     "Tous nos produits sont des fichiers numériques (PDF) à télécharger et imprimer chez vous. Vous recevez le fichier immédiatement après l'achat, à imprimer autant de fois que vous le souhaitez !",
+    'faq.q3':     "Comment reçois-je ma commande ?",
+    'faq.a3':     "Dès le paiement validé, vous recevez automatiquement un lien de téléchargement par email dans les minutes qui suivent. Vérifiez vos spams si vous ne le voyez pas !",
+    'faq.q4':     "Puis-je imprimer plusieurs exemplaires ?",
+    'faq.a4':     "Oui ! Une fois acheté, le fichier vous appartient pour un usage personnel. Vous pouvez l'imprimer autant de fois que nécessaire pour votre famille ou votre classe.",
+    'faq.q5':     "Quels modes de paiement acceptez-vous ?",
+    'faq.a5':     "Nous acceptons les cartes bancaires (Visa, Mastercard, American Express) ainsi que PayPal. Tous les paiements sont sécurisés.",
+    'faq.q6':     "Y a-t-il des produits gratuits ?",
+    'faq.a6':     "Oui ! Inscrivez-vous à notre newsletter et recevez un joli imprimable offert directement dans votre boîte mail. C'est notre façon de vous dire bienvenue &#9829;",
   },
 
   es: {
@@ -1028,6 +1267,30 @@ const T = {
     'ft.cookies':     'Cookies',
     'ft.copy':        '© 2026 Marie la Souris — Todos los derechos reservados',
     'ft.made':        'Hecho con &#9829; para los más pequeños',
+    'hist.h2':    'Nuestra historia &#9829;',
+    'hist.body1': "Soy Cote, una mamá apasionada por la educación respetuosa y el juego creativo. Marie la Souris nació de mi deseo de crear materiales pedagógicos bonitos, accesibles y efectivos para niños de 2 a 7 años.",
+    'hist.body2': "Cada tarjeta, cada juego está pensado con amor para ayudar a tu hijo a crecer con dulzura, a su propio ritmo, con una sonrisa.",
+    'hist.btn':   'Ver nuestras creaciones',
+    'hist.v1t':   'Educación respetuosa',
+    'hist.v1b':   'Herramientas diseñadas para respetar el ritmo natural de cada niño.',
+    'hist.v2t':   'Diseño con amor',
+    'hist.v2b':   'Cada ilustración está creada con cuidado para que aprender sea tan bonito como divertido.',
+    'hist.v3t':   'Pedagogía activa',
+    'hist.v3b':   'Jugar es aprender. Nuestros juegos estimulan la curiosidad, la autonomía y la creatividad.',
+    'faq.title':  'Preguntas frecuentes',
+    'faq.sub':    'Todo lo que necesitas saber antes de empezar ✨',
+    'faq.q1':     '¿A quién van dirigidos sus productos?',
+    'faq.a1':     'Nuestros productos están diseñados para niños de 2 a 7 años, pero también son perfectos para maestros, educadores y cualquier padre que quiera enriquecer el día a día de su hijo.',
+    'faq.q2':     '¿Sus productos son digitales o físicos?',
+    'faq.a2':     'Todos nuestros productos son archivos digitales (PDF) para descargar e imprimir en casa. Recibes el archivo inmediatamente después de la compra, ¡imprimible las veces que quieras!',
+    'faq.q3':     '¿Cómo recibo mi pedido?',
+    'faq.a3':     'Una vez confirmado el pago, recibes automáticamente un enlace de descarga por email en minutos. ¡Revisa tu carpeta de spam si no lo ves!',
+    'faq.q4':     '¿Puedo imprimir varios ejemplares?',
+    'faq.a4':     '¡Sí! Una vez comprado, el archivo es tuyo para uso personal. Puedes imprimirlo todas las veces que necesites para tu familia o tu clase.',
+    'faq.q5':     '¿Qué métodos de pago aceptan?',
+    'faq.a5':     'Aceptamos tarjetas bancarias (Visa, Mastercard, American Express) y PayPal. Todos los pagos son seguros.',
+    'faq.q6':     '¿Tienen productos gratuitos?',
+    'faq.a6':     '¡Sí! Suscríbete a nuestra newsletter y recibe un imprimible de regalo directamente en tu correo. Es nuestra forma de darte la bienvenida &#9829;',
   },
 
   en: {
@@ -1067,6 +1330,30 @@ const T = {
     'ft.cookies':     'Cookies',
     'ft.copy':        '© 2026 Marie la Souris — All rights reserved',
     'ft.made':        'Made with &#9829; for little ones',
+    'hist.h2':    'Our story &#9829;',
+    'hist.body1': "I'm Cote, a mom passionate about respectful parenting and creative play. Marie la Souris was born from my desire to create beautiful, accessible and effective educational materials for children aged 2 to 7.",
+    'hist.body2': "Every card, every game is crafted with love to help your child grow gently, at their own pace, with a smile.",
+    'hist.btn':   'See our creations',
+    'hist.v1t':   'Respectful education',
+    'hist.v1b':   'Tools designed to respect the natural rhythm of every child.',
+    'hist.v2t':   'Design with love',
+    'hist.v2b':   'Every illustration is carefully created so that learning is as beautiful as it is joyful.',
+    'hist.v3t':   'Active pedagogy',
+    'hist.v3b':   'Playing is learning. Our games stimulate curiosity, autonomy and creativity.',
+    'faq.title':  'Frequently asked questions',
+    'faq.sub':    'Everything you need to know before you start ✨',
+    'faq.q1':     'Who are your products for?',
+    'faq.a1':     "Our products are designed for children aged 2 to 7, but are also perfect for teachers, educators and any parent wanting to enrich their child's everyday life.",
+    'faq.q2':     'Are your products digital or physical?',
+    'faq.a2':     'All our products are digital files (PDF) to download and print at home. You receive the file immediately after purchase, printable as many times as you like!',
+    'faq.q3':     'How do I receive my order?',
+    'faq.a3':     "Once payment is confirmed, you automatically receive a download link by email within minutes. Check your spam folder if you don't see it!",
+    'faq.q4':     'Can I print multiple copies?',
+    'faq.a4':     'Yes! Once purchased, the file is yours for personal use. You can print it as many times as needed for your family or classroom.',
+    'faq.q5':     'What payment methods do you accept?',
+    'faq.a5':     'We accept credit cards (Visa, Mastercard, American Express) and PayPal. All payments are secure.',
+    'faq.q6':     'Do you have free products?',
+    'faq.a6':     "Yes! Subscribe to our newsletter and receive a free printable directly in your inbox. It's our way of welcoming you &#9829;",
   }
 };
 
@@ -1132,6 +1419,54 @@ function handleNL(e) {
     e.target.reset();
   }, 3000);
 }
+
+/* ──────────────────────────────────────────────────
+   FAQ ACCORDION
+────────────────────────────────────────────────── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ──────────────────────────────────────────────────
+   HERO DOTS — 3 slides
+────────────────────────────────────────────────── */
+const heroSlides = [
+  { h1: { fr:'Petites mains,<br/>grandes découvertes', es:'Pequeñas manos,<br/>grandes descubrimientos', en:'Little hands,<br/>big discoveries' },
+    sub: { fr:'Jouer, apprendre et sourire avec Marie la Souris', es:'Jugar, aprender y sonreír con Marie la Souris', en:'Play, learn and smile with Marie la Souris' },
+    btn: { fr:'Découvrir nos produits', es:'Descubrir productos', en:'Discover our products' },
+    href: '#productos' },
+  { h1: { fr:'Notre histoire &#9829;', es:'Nuestra historia &#9829;', en:'Our story &#9829;' },
+    sub: { fr:'Créé par une maman, pour votre famille', es:'Creado por una mamá, para tu familia', en:'Created by a mom, for your family' },
+    btn: { fr:'En savoir plus', es:'Saber más', en:'Learn more' },
+    href: '#historia' },
+  { h1: { fr:'Imprimable Gratuit', es:'Imprimible Gratis', en:'Free Printable' },
+    sub: { fr:'Rejoignez notre communauté !', es:'¡Únete a nuestra comunidad!', en:'Join our community!' },
+    btn: { fr:'Télécharger', es:'Descargar', en:'Download' },
+    href: '#contacto' },
+];
+let currentSlide = 0;
+const dots = document.querySelectorAll('.hero-dots .dot');
+const heroH1  = document.querySelector('.hero-text h1');
+const heroSub = document.querySelector('.hero-text p');
+const heroBtn = document.querySelector('.hero-text .btn-rose');
+
+function goSlide(idx) {
+  currentSlide = idx;
+  const s = heroSlides[idx];
+  heroH1.innerHTML  = s.h1[lang]  || s.h1.fr;
+  heroSub.innerHTML = s.sub[lang] || s.sub.fr;
+  heroBtn.innerHTML = s.btn[lang] || s.btn.fr;
+  heroBtn.href      = s.href;
+  dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+}
+
+dots.forEach((d, i) => d.addEventListener('click', () => goSlide(i)));
+
+// Auto-advance every 6s
+setInterval(() => goSlide((currentSlide + 1) % heroSlides.length), 6000);
 
 /* ──────────────────────────────────────────────────
    SCROLL REVEAL

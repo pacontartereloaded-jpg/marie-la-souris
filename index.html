@@ -275,6 +275,37 @@
       transform: translateY(-12px);
     }
 
+    /* ── LETTER BOUNCE ANIMATION ─────────────────── */
+    .h1-letter {
+      display: inline-block;
+      opacity: 0;
+      animation: letterDrop .5s cubic-bezier(.34,1.56,.64,1) forwards;
+    }
+    @keyframes letterDrop {
+      from { opacity:0; transform: translateY(-22px) rotate(-6deg) scale(.5); }
+      to   { opacity:1; transform: translateY(0) rotate(0deg) scale(1); }
+    }
+
+    /* ── RUNNING MOUSE ───────────────────────────── */
+    .running-mouse {
+      position: absolute;
+      top: -28px;
+      left: -60px;
+      width: 52px;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+    }
+    .running-mouse img { width: 100%; }
+    .running-mouse.run {
+      animation: mouseRun 1.4s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes mouseRun {
+      0%   { left: -60px; opacity: 1; }
+      85%  { opacity: 1; }
+      100% { left: calc(100% + 20px); opacity: 0; }
+    }
+
     /* ── 1. FLOATING MOUSE ───────────────────────── */
     @keyframes floatMouse {
       0%, 100% { transform: translateY(0px); }
@@ -926,7 +957,10 @@
     <span class="hd" style="top:40%;right:22%;font-size:.8rem;opacity:.38;color:var(--brown-fade)">&#10022;</span>
     <span class="hd" style="top:72%;right:23%;font-size:.62rem;opacity:.4;color:var(--brown-fade)">&#10022;</span>
 
-    <h1 data-i18n="hero.h1">Petites mains,<br/>grandes découvertes</h1>
+    <div style="position:relative;width:100%">
+      <div class="running-mouse" id="runningMouse"><img src="mice/mouse-02.png" alt=""/></div>
+      <h1 data-i18n="hero.h1" style="position:relative">Petites mains,<br/>grandes découvertes</h1>
+    </div>
     <p data-i18n="hero.sub">Jouer, apprendre et sourire avec Marie la Souris</p>
     <a href="/shop" class="btn-rose" data-i18n="hero.btn">Découvrir nos produits</a>
   </div>
@@ -1525,8 +1559,8 @@ const heroSlides = [
     sub: { fr:'Jouer, apprendre et sourire avec Marie la Souris', es:'Jugar, aprender y sonreír con Marie la Souris', en:'Play, learn and smile with Marie la Souris' },
     btn: { fr:'Découvrir nos produits', es:'Descubrir productos', en:'Discover our products' },
     href: 'shop', mouse: 'img/mouse-hero-nobg.png' },
-  { h1: { fr:'', es:'', en:'' },
-    sub: { fr:'', es:'', en:'' },
+  { h1: { fr:'Fait avec amour,<br/>pour grandir ensemble', es:'Hecho con amor,<br/>para crecer juntos', en:'Made with love,<br/>to grow together' },
+    sub: { fr:'Des ressources douces et créatives pour chaque enfant', es:'Recursos dulces y creativos para cada niño', en:'Gentle and creative resources for every child' },
     btn: { fr:'En savoir plus', es:'Saber más', en:'Learn more' },
     href: 'about', mouse: 'img/mouse-hero-2.png' },
   { h1: { fr:'Imprimable Gratuit', es:'Imprimible Gratis', en:'Free Printable' },
@@ -1542,18 +1576,36 @@ const heroBtn     = document.querySelector('.hero-text .btn-rose');
 const heroText    = document.querySelector('.hero-text');
 const heroMouseWrap = document.getElementById('heroMouseWrap');
 const heroMouseImg  = document.getElementById('heroMouseImg');
+const runningMouse  = document.getElementById('runningMouse');
+
+function animateH1() {
+  if (!heroH1) return;
+  const rawHTML = heroH1.innerHTML;
+  // Wrap each character (preserving <br/> tags) in animated spans
+  let charIdx = 0;
+  heroH1.innerHTML = rawHTML.replace(/(<br\s*\/?>)|([^<])/g, (match, br, ch) => {
+    if (br) return br;
+    const delay = charIdx++ * 42;
+    return `<span class="h1-letter" style="animation-delay:${delay}ms">${ch}</span>`;
+  });
+
+  // Run the mouse across
+  if (runningMouse) {
+    runningMouse.classList.remove('run');
+    void runningMouse.offsetWidth; // force reflow to restart animation
+    runningMouse.classList.add('run');
+  }
+}
 
 function goSlide(idx) {
   if (idx === currentSlide) return;
   currentSlide = idx;
   const s = heroSlides[idx];
 
-  // Fade out
   heroText.classList.add('fading');
   heroMouseWrap.classList.add('fading');
 
   setTimeout(() => {
-    // Swap content while invisible
     heroH1.innerHTML  = s.h1[lang]  || s.h1.fr;
     heroSub.innerHTML = s.sub[lang] || s.sub.fr;
     heroBtn.innerHTML = s.btn[lang] || s.btn.fr;
@@ -1561,11 +1613,14 @@ function goSlide(idx) {
     heroMouseImg.src  = s.mouse;
     dots.forEach((d, i) => d.classList.toggle('on', i === idx));
 
-    // Fade back in
     heroText.classList.remove('fading');
     heroMouseWrap.classList.remove('fading');
+    animateH1();
   }, 380);
 }
+
+// Animate on first load
+animateH1();
 
 dots.forEach((d, i) => d.addEventListener('click', () => goSlide(i)));
 

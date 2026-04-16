@@ -49,6 +49,18 @@
       z-index: 900;
       background: var(--cream-white);
       border-bottom: 1px solid rgba(74,55,40,.09);
+      transition: padding .3s ease, box-shadow .3s ease;
+    }
+    nav.nav-scrolled {
+      box-shadow: 0 2px 18px rgba(74,55,40,.13);
+    }
+    nav.nav-scrolled .nav-inner {
+      padding-top: .15rem;
+      padding-bottom: .2rem;
+    }
+    nav.nav-scrolled .nav-mouse {
+      width: 38px;
+      height: 38px;
     }
     .nav-inner {
       max-width: 1280px;
@@ -261,6 +273,70 @@
     .hero-text.fading {
       opacity: 0;
       transform: translateY(-12px);
+    }
+
+    /* ── 1. FLOATING MOUSE ───────────────────────── */
+    @keyframes floatMouse {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    #heroMouseImg { animation: floatMouse 3.8s ease-in-out infinite; }
+
+    /* ── 3. PULSE CTA BUTTON ─────────────────────── */
+    @keyframes ctaPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(232,180,176,.55); }
+      60%       { box-shadow: 0 0 0 10px rgba(232,180,176,0); }
+    }
+    .hero-text .btn-rose { animation: ctaPulse 2.4s ease-out infinite; }
+
+    /* ── 4. STAGGERED PRODUCT CARDS ─────────────── */
+    .prod-card.reveal { transition-delay: 0ms; }
+    .prod-card.reveal:nth-child(2) { transition-delay: 120ms; }
+    .prod-card.reveal:nth-child(3) { transition-delay: 240ms; }
+
+    /* ── 5. STAR PARTICLES ───────────────────────── */
+    .hero-stars { position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:3; }
+    .star {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: var(--pink);
+      border-radius: 50%;
+      opacity: 0;
+      animation: starFloat linear infinite;
+    }
+    @keyframes starFloat {
+      0%   { opacity: 0; transform: translateY(0) scale(.4); }
+      15%  { opacity: .7; }
+      85%  { opacity: .4; }
+      100% { opacity: 0; transform: translateY(-120px) scale(1); }
+    }
+
+    /* ── 9. ANIMATED WAVE DIVIDER ────────────────── */
+    .wave-divider { line-height: 0; overflow: hidden; margin-top: -2px; }
+    .wave-divider svg { display:block; width:100%; }
+    .wave-path { animation: waveMove 4s ease-in-out infinite alternate; transform-origin: center; }
+    @keyframes waveMove {
+      0%   { d: path("M0,32 C180,0 360,64 540,32 C720,0 900,64 1080,32 C1260,0 1440,48 1440,48 L1440,56 L0,56 Z"); }
+      100% { d: path("M0,48 C180,64 360,0 540,48 C720,64 900,0 1080,48 C1260,64 1440,16 1440,32 L1440,56 L0,56 Z"); }
+    }
+
+    /* ── 6. STATS BAR ────────────────────────────── */
+    .stats-bar {
+      display: flex; justify-content: center; gap: 3.5rem; flex-wrap: wrap;
+      padding: 1.8rem 2rem;
+      background: var(--cream-white);
+      border-bottom: 1px solid rgba(74,55,40,.07);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600;
+      color: var(--rose); display: block;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .72rem; letter-spacing: .09em;
+      text-transform: uppercase; color: var(--taupe);
     }
 
     /* Botanical branch beside the mouse */
@@ -784,7 +860,7 @@
 <!-- ╔══════════════════════╗ -->
 <!-- ║      NAVIGATION      ║ -->
 <!-- ╚══════════════════════╝ -->
-<nav>
+<nav id="mainNav">
   <div class="nav-inner">
 
     <ul class="nav-left">
@@ -867,6 +943,9 @@
     <circle cx="28" cy="28" r="1.8" fill="#E8B4B0" opacity=".65"/>
   </svg>
 
+  <!-- Star particles -->
+  <div class="hero-stars" id="heroStars"></div>
+
   <!-- Mouse — absolute, bottom-right of hero -->
   <div class="hero-mouse-wrap" id="heroMouseWrap">
     <img id="heroMouseImg" src="img/mouse-hero-nobg.png" alt="Marie la Souris illustrée" />
@@ -881,6 +960,19 @@
 
 </section>
 
+<!-- ── Wave divider ── -->
+<div class="wave-divider" style="background:var(--cream)">
+  <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:46px">
+    <path class="wave-path" d="M0,32 C180,0 360,64 540,32 C720,0 900,64 1080,32 C1260,0 1440,48 1440,48 L1440,56 L0,56 Z" fill="var(--cream-white)"/>
+  </svg>
+</div>
+
+<!-- ── Stats bar ── -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num" data-count="500">0</span><span class="stat-label" data-i18n="stat.families">Familles</span></div>
+  <div class="stat-item"><span class="stat-num" data-count="12">0</span><span class="stat-label" data-i18n="stat.products">Produits</span></div>
+  <div class="stat-item"><span class="stat-num" data-count="98">0</span><span class="stat-label" data-i18n="stat.happy">% Satisfaits</span></div>
+</div>
 
 <!-- ╔══════════════════════╗ -->
 <!-- ║       TAGLINE        ║ -->
@@ -1485,6 +1577,99 @@ dots.forEach((d, i) => d.addEventListener('click', () => goSlide(i)));
 
 // Auto-advance every 6s
 setInterval(() => goSlide((currentSlide + 1) % heroSlides.length), 6000);
+
+/* ──────────────────────────────────────────────────
+   2. NAV SHRINK ON SCROLL
+────────────────────────────────────────────────── */
+const mainNav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  mainNav.classList.toggle('nav-scrolled', window.scrollY > 55);
+}, { passive: true });
+
+/* ──────────────────────────────────────────────────
+   5. STAR PARTICLES IN HERO
+────────────────────────────────────────────────── */
+(function spawnStars() {
+  const container = document.getElementById('heroStars');
+  if (!container) return;
+  const shapes = ['50%', '2px', '0']; // circle, square, diamond
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = 4 + Math.random() * 5;
+    s.style.cssText = [
+      `left:${5 + Math.random() * 88}%`,
+      `top:${10 + Math.random() * 75}%`,
+      `width:${size}px`, `height:${size}px`,
+      `border-radius:${shapes[Math.floor(Math.random()*3)]}`,
+      `animation-duration:${3 + Math.random() * 4}s`,
+      `animation-delay:${Math.random() * 5}s`,
+      `opacity:0`,
+    ].join(';');
+    container.appendChild(s);
+  }
+})();
+
+/* ──────────────────────────────────────────────────
+   6. COUNTER ANIMATION
+────────────────────────────────────────────────── */
+function animateCount(el, target, duration) {
+  let start = null;
+  function step(ts) {
+    if (!start) start = ts;
+    const pct = Math.min((ts - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - pct, 3);
+    el.textContent = Math.floor(ease * target) + (el.dataset.suffix || '');
+    if (pct < 1) requestAnimationFrame(step);
+    else el.textContent = target + (el.dataset.suffix || '');
+  }
+  requestAnimationFrame(step);
+}
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.stat-num[data-count]').forEach(el => {
+      animateCount(el, +el.dataset.count, 1600);
+    });
+    statsObs.unobserve(e.target);
+  });
+}, { threshold: 0.5 });
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) statsObs.observe(statsBar);
+
+/* ──────────────────────────────────────────────────
+   7. PARALLAX ON HERO MOUSE
+────────────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (heroMouseWrap) heroMouseWrap.style.transform = `translateY(${y * .12}px)`;
+}, { passive: true });
+
+/* ──────────────────────────────────────────────────
+   8. TYPEWRITER ON HERO H1 (first load only)
+────────────────────────────────────────────────── */
+(function typeWriter() {
+  const el = heroH1;
+  if (!el) return;
+  const full = el.innerHTML;
+  el.innerHTML = '';
+  const stripped = full.replace(/<[^>]+>/g, '');
+  let i = 0;
+  const cursor = document.createElement('span');
+  cursor.style.cssText = 'border-right:2px solid var(--rose);margin-left:1px;animation:blink .7s step-end infinite';
+  el.appendChild(cursor);
+  const style = document.createElement('style');
+  style.textContent = '@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}';
+  document.head.appendChild(style);
+  const iv = setInterval(() => {
+    cursor.before(stripped[i++] || '');
+    if (i > stripped.length) {
+      clearInterval(iv);
+      cursor.remove();
+      el.innerHTML = full; // restore HTML entities / line breaks
+    }
+  }, 48);
+})();
 
 /* ──────────────────────────────────────────────────
    SCROLL REVEAL

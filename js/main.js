@@ -29,6 +29,9 @@ const T = {
     'pli.desc2':      'Des illustrations colorées pour aider les petits à identifier et exprimer leurs émotions. Un support précieux pour les parents et les éducateurs.',
     'pli.desc3':      'Un jeu de mémoire avec de jolis animaux illustrés à imprimer et découper. Stimule la concentration et la mémoire visuelle dès 3 ans.',
     'feat.desc1':     "Un outil doux et visuel pour aider votre enfant à organiser sa routine matinale en toute autonomie. Idéal pour les 2–6 ans.",
+    'stat.families':  'Familles',
+    'stat.products':  'Produits',
+    'stat.happy':     '% Satisfaits',
     'nl.title':       'Imprimable Gratuit',
     'nl.sub':         "Recevez un joli imprimable offert en vous inscrivant à notre newsletter!",
     'nl.email':       'Email adresse',
@@ -103,6 +106,9 @@ const T = {
     'pli.desc2':      'Ilustraciones coloridas para ayudar a los pequeños a identificar y expresar sus emociones. Un recurso valioso para padres y educadores.',
     'pli.desc3':      'Un juego de memoria con lindos animales ilustrados para imprimir y recortar. Estimula la concentración y la memoria visual desde los 3 años.',
     'feat.desc1':     'Una herramienta suave y visual para ayudar a tu hijo a organizar su rutina matutina con autonomía. Ideal para los 2–6 años.',
+    'stat.families':  'Familias',
+    'stat.products':  'Productos',
+    'stat.happy':     '% Satisfechos',
     'nl.title':       'Imprimible Gratis',
     'nl.sub':         '¡Recibe un imprimible especial al inscribirte en nuestra newsletter!',
     'nl.email':       'Correo electrónico',
@@ -177,6 +183,9 @@ const T = {
     'pli.desc2':      'Colorful illustrations to help little ones identify and express their emotions. A precious resource for parents and educators.',
     'pli.desc3':      'A memory game with beautiful illustrated animals to print and cut out. Stimulates concentration and visual memory from age 3.',
     'feat.desc1':     'A gentle visual tool to help your child organize their morning routine independently. Perfect for ages 2–6.',
+    'stat.families':  'Families',
+    'stat.products':  'Products',
+    'stat.happy':     '% Satisfied',
     'nl.title':       'Free Printable',
     'nl.sub':         'Receive a lovely printable gift when you join our newsletter!',
     'nl.email':       'Email address',
@@ -354,7 +363,47 @@ function addCart(name, price, img) {
   }
   saveCart();
   updateBadge();
+  launchConfetti();
   openCart();
+}
+
+function launchConfetti() {
+  const colors = ['#E8B4B0','#9DB8A8','#C4A882','#F5C6A0','#fff','#E8D5C4'];
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  const pieces = Array.from({length: 60}, () => ({
+    x: Math.random() * canvas.width,
+    y: -10 - Math.random() * 40,
+    r: 3 + Math.random() * 5,
+    d: 1.5 + Math.random() * 2.5,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    tilt: Math.random() * 10 - 5,
+    tiltSpeed: .08 + Math.random() * .1,
+    angle: 0,
+    vx: (Math.random() - .5) * 3,
+  }));
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach(p => {
+      p.angle += p.tiltSpeed;
+      p.y += p.d;
+      p.x += p.vx;
+      p.tilt = Math.sin(p.angle) * 10;
+      ctx.beginPath();
+      ctx.ellipse(p.x, p.y, p.r, p.r * .4, p.tilt * Math.PI / 180, 0, 2 * Math.PI);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+    });
+    frame++;
+    if (frame < 90) requestAnimationFrame(draw);
+    else canvas.remove();
+  }
+  draw();
 }
 
 function removeFromCart(index) {

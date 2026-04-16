@@ -255,19 +255,124 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ──────────────────────────────────────────────────
-   CART
+   CART DRAWER
 ────────────────────────────────────────────────── */
-let cartN = 0;
+let cart = [];
 
-function addCart() {
-  cartN++;
-  const badge = document.getElementById('cartBadge');
-  if (badge) {
-    badge.textContent = cartN;
-    badge.style.transform = 'scale(1.5)';
-    setTimeout(() => badge.style.transform = '', 280);
-  }
+const cartLabels = {
+  fr: { title:'Mon panier', empty:'Votre panier est vide ♥', total:'Total', checkout:'Procéder au paiement', coming:'Paiement disponible bientôt' },
+  es: { title:'Mi carrito', empty:'Tu carrito está vacío ♥', total:'Total', checkout:'Proceder al pago', coming:'Pago disponible próximamente' },
+  en: { title:'My cart',    empty:'Your cart is empty ♥',    total:'Total', checkout:'Proceed to checkout', coming:'Payment coming soon' },
+};
+
+function injectCartDrawer() {
+  if (document.getElementById('cartDrawer')) return;
+  document.body.insertAdjacentHTML('beforeend', `
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-head">
+        <h3 id="cartTitle">Mon panier</h3>
+        <button class="cart-close" onclick="closeCart()">&#10005;</button>
+      </div>
+      <div class="cart-body" id="cartBody"></div>
+      <div class="cart-foot" id="cartFoot" style="display:none">
+        <div class="cart-total-row">
+          <span class="cart-total-label" id="cartTotalLabel">Total</span>
+          <span class="cart-total-price" id="cartTotalPrice">USD $0.00</span>
+        </div>
+        <button class="cart-checkout" disabled id="cartCheckout">Procéder au paiement</button>
+        <p class="cart-coming" id="cartComing">Paiement disponible bientôt</p>
+      </div>
+    </div>
+  `);
+  document.querySelectorAll('.ni[title="Panier"], .ni').forEach(btn => {
+    if (btn.textContent.includes('🛒') || btn.innerHTML.includes('128717')) {
+      btn.onclick = openCart;
+    }
+  });
 }
+
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  renderCart();
+}
+
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+}
+
+function updateBadge() {
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  document.querySelectorAll('#cartBadge').forEach(b => {
+    b.textContent = total;
+    b.style.transform = 'scale(1.5)';
+    setTimeout(() => b.style.transform = '', 280);
+  });
+}
+
+function renderCart() {
+  const lbl = cartLabels[lang] || cartLabels.fr;
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  document.getElementById('cartTitle').textContent = lbl.title;
+  document.getElementById('cartTotalLabel').textContent = lbl.total;
+  document.getElementById('cartCheckout').textContent = lbl.checkout;
+  document.getElementById('cartComing').textContent = lbl.coming;
+
+  if (cart.length === 0) {
+    body.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛒</div><p>${lbl.empty}</p></div>`;
+    foot.style.display = 'none';
+    return;
+  }
+
+  body.innerHTML = cart.map((item, i) => `
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="${item.img}" alt="${item.name}"/></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">USD $${item.price.toFixed(2)}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${i},-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+        </div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
+    </div>
+  `).join('');
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById('cartTotalPrice').textContent = `USD $${total.toFixed(2)}`;
+  foot.style.display = 'block';
+}
+
+function addCart(name, price, img) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price: parseFloat(price), img: img || 'img/product-cartes.jpg', qty: 1 });
+  }
+  updateBadge();
+  openCart();
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateBadge();
+  renderCart();
+}
+
+function changeQty(index, delta) {
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) cart.splice(index, 1);
+  updateBadge();
+  renderCart();
+}
+
+document.addEventListener('DOMContentLoaded', injectCartDrawer);
 
 /* ──────────────────────────────────────────────────
    NEWSLETTER

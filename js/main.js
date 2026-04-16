@@ -257,7 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ──────────────────────────────────────────────────
    CART DRAWER
 ────────────────────────────────────────────────── */
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('mls_cart') || '[]');
+
+function saveCart() { localStorage.setItem('mls_cart', JSON.stringify(cart)); }
 
 const cartLabels = {
   fr: { title:'Mon panier', empty:'Votre panier est vide ♥', total:'Total', checkout:'Procéder au paiement', coming:'Paiement disponible bientôt' },
@@ -355,12 +357,14 @@ function addCart(name, price, img) {
   } else {
     cart.push({ name, price: parseFloat(price), img: img || 'img/product-cartes.jpg', qty: 1 });
   }
+  saveCart();
   updateBadge();
   openCart();
 }
 
 function removeFromCart(index) {
   cart.splice(index, 1);
+  saveCart();
   updateBadge();
   renderCart();
 }
@@ -368,11 +372,12 @@ function removeFromCart(index) {
 function changeQty(index, delta) {
   cart[index].qty += delta;
   if (cart[index].qty <= 0) cart.splice(index, 1);
+  saveCart();
   updateBadge();
   renderCart();
 }
 
-document.addEventListener('DOMContentLoaded', injectCartDrawer);
+document.addEventListener('DOMContentLoaded', () => { injectCartDrawer(); updateBadge(); });
 
 /* ──────────────────────────────────────────────────
    NEWSLETTER

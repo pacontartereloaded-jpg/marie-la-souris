@@ -577,7 +577,7 @@ const MICE = [
   { f:'mice/mouse-07.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
   { f:'mice/mouse-08.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
   { f:'mice/mouse-09.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-10.png', dir:'r', ok:['pL']                  },
+  { f:'mice/mouse-10.png', dir:'r', ok:['pR']                  },
   { f:'mice/mouse-11.png', dir:'f', ok:['pL','pR','pBL','pBR'] },
   { f:'mice/mouse-12.png', dir:'l', ok:['pL','pR','pBL','pBR'] },
   { f:'mice/mouse-13.png', dir:'l', ok:['pL','pR','pBL','pBR'] },

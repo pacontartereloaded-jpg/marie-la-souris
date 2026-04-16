@@ -289,31 +289,28 @@
     /* ── RUNNING MOUSE SPRITE ───────────────────── */
     .running-mouse {
       position: absolute;
-      top: -50px;
-      left: -110px;
-      width: 110px;
-      height: 90px;
+      top: -52px;
+      left: -90px;
+      width: 90px;
       pointer-events: none;
       z-index: 10;
       opacity: 0;
-      background-image: url('mice/mouse-run-sprite.png');
-      background-size: 1320px 90px;
-      background-repeat: no-repeat;
-      background-position: 0 0;
     }
+    .running-mouse img { width: 100%; display: block; }
     .running-mouse.run {
-      animation:
-        mouseRun  1.6s cubic-bezier(.3,0,.7,1) forwards,
-        runCycle   .5s steps(12) infinite;
+      animation: mouseRun 1.6s cubic-bezier(.3,0,.7,1) forwards;
+    }
+    .running-mouse.run img {
+      animation: mouseBob .25s ease-in-out infinite alternate;
     }
     @keyframes mouseRun {
-      0%   { left: -110px; opacity: 1; }
+      0%   { left: -90px; opacity: 1; }
       88%  { opacity: 1; }
       100% { left: calc(100% + 30px); opacity: 0; }
     }
-    @keyframes runCycle {
-      from { background-position: 0 0; }
-      to   { background-position: -1320px 0; }
+    @keyframes mouseBob {
+      from { transform: translateY(0px) rotate(-2deg); }
+      to   { transform: translateY(-5px) rotate(2deg); }
     }
 
     /* ── 1. FLOATING MOUSE ───────────────────────── */
@@ -968,7 +965,7 @@
     <span class="hd" style="top:72%;right:23%;font-size:.62rem;opacity:.4;color:var(--brown-fade)">&#10022;</span>
 
     <div style="position:relative;width:100%">
-      <div class="running-mouse" id="runningMouse"></div>
+      <div class="running-mouse" id="runningMouse"><img src="mice/mouse-02.png" alt=""/></div>
       <h1 data-i18n="hero.h1" style="position:relative">Petites mains,<br/>grandes découvertes</h1>
     </div>
     <p data-i18n="hero.sub">Jouer, apprendre et sourire avec Marie la Souris</p>

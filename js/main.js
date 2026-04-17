@@ -461,12 +461,13 @@ document.addEventListener('DOMContentLoaded', () => { injectCartDrawer(); update
 
   function dismiss() {
     sessionStorage.setItem('mls_intro_seen', '1');
-    intro.classList.add('dismissing');
-    setTimeout(() => intro.remove(), 720);
+    intro.style.pointerEvents = 'none';
+    intro.style.opacity = '0';
+    setTimeout(() => intro.remove(), 750);
   }
 
-  // Auto-dismiss after 4.2s
-  const timer = setTimeout(dismiss, 4200);
+  // Auto-dismiss after 3.2s
+  const timer = setTimeout(dismiss, 3200);
 
   // Skip button
   const skip = document.getElementById('introSkip');

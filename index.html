@@ -1399,6 +1399,26 @@
 
 <!-- ═══════════════════ JAVASCRIPT ══════════════════ -->
 <script>
+/* ── INTRO DISMISS ── */
+(function() {
+  var intro = document.getElementById('siteIntro');
+  if (!intro) return;
+  if (sessionStorage.getItem('mls_intro_seen')) { intro.style.display = 'none'; return; }
+  function dismiss() {
+    sessionStorage.setItem('mls_intro_seen', '1');
+    intro.style.pointerEvents = 'none';
+    intro.style.opacity = '0';
+    setTimeout(function() { intro.style.display = 'none'; }, 650);
+  }
+  var timer = setTimeout(dismiss, 3000);
+  var btn = document.getElementById('introSkip');
+  if (btn) btn.addEventListener('click', function() { clearTimeout(timer); dismiss(); });
+  intro.addEventListener('click', function(e) {
+    if (e.target === btn) return;
+    clearTimeout(timer); dismiss();
+  });
+})();
+
 /* ──────────────────────────────────────────────────
    TRANSLATIONS
 ────────────────────────────────────────────────── */

@@ -379,26 +379,26 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 .peek { position: fixed; z-index: 800; pointer-events: none; transition: transform .85s cubic-bezier(.34,1.18,.64,1); filter: drop-shadow(0 5px 14px rgba(74,55,40,.22)); }
 .peek img { display: block; height: auto; }
 
-/* Lados: cabeza rotada saliendo de la pared
-   rotate(-90deg) → top de imagen apunta a la DERECHA → pL (pared izquierda) ✓
-   rotate(+90deg) → top de imagen apunta a la IZQUIERDA → pR (pared derecha) ✓
-   img W=280 → H≈362px. margin-left centra la cabeza en el contenedor. */
-#pL  { left: 0; top: 38%; width: 200px; height: 280px; overflow: hidden; transform: translateX(-220px); }
-#pL img { width: 280px; transform: rotate(-90deg); margin-left: -122px; margin-top: -41px; }
-#pL.show { transform: translateX(-12px); }
+/* Lados: img W=380 → H≈492px, origin=(190,246)
+   rotate(-90deg): cabeza (y=0) → visual x=436 (derecha) → pL ✓
+   rotate(+90deg): cabeza (y=0) → visual x=-56 (izquierda) → pR ✓
+   Cabeza = top 40% de figura → visual 197px. Body queda fuera del contenedor. */
+#pL  { left: 0; top: 38%; width: 200px; height: 380px; overflow: hidden; transform: translateX(-220px); }
+#pL img { width: 380px; transform: rotate(-90deg); margin-left: -239px; margin-top: -56px; }
+#pL.show { transform: translateX(-15px); }
 
-#pR  { right: 0; top: 52%; width: 200px; height: 280px; overflow: hidden; transform: translateX(220px); }
-#pR img { width: 280px; transform: rotate(90deg); margin-left: 41px; margin-top: -41px; }
-#pR.show { transform: translateX(12px); }
+#pR  { right: 0; top: 52%; width: 200px; height: 380px; overflow: hidden; transform: translateX(220px); }
+#pR img { width: 380px; transform: rotate(90deg); margin-left: 56px; margin-top: -56px; }
+#pR.show { transform: translateX(15px); }
 
-/* Abajo: cabeza saliendo desde el suelo */
-#pBL { left: 12%; bottom: 0; width: 220px; transform: translateY(100%); }
-#pBL img { width: 220px; }
-#pBL.show { transform: translateY(45%); }
+/* Abajo: cabeza = top 40% → translateY(60%) oculta el cuerpo bajo la pantalla */
+#pBL { left: 12%; bottom: 0; width: 350px; transform: translateY(100%); }
+#pBL img { width: 350px; }
+#pBL.show { transform: translateY(60%); }
 
-#pBR { right: 16%; bottom: 0; width: 220px; transform: translateY(100%); }
-#pBR img { width: 220px; }
-#pBR.show { transform: translateY(45%); }
+#pBR { right: 16%; bottom: 0; width: 350px; transform: translateY(100%); }
+#pBR img { width: 350px; }
+#pBR.show { transform: translateY(60%); }
 
 /* ── SCROLL REVEAL ───────────────────────────── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }

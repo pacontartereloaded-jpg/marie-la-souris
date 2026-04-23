@@ -379,16 +379,17 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 .peek { position: fixed; z-index: 800; pointer-events: none; transition: transform .85s cubic-bezier(.34,1.18,.64,1); filter: drop-shadow(0 5px 14px rgba(74,55,40,.22)); }
 .peek img { display: block; height: auto; }
 
-/* Lados: img W=380 → H≈492px, origin=(190,246)
-   rotate(-90deg): cabeza (y=0) → visual x=436 (derecha) → pL ✓
-   rotate(+90deg): cabeza (y=0) → visual x=-56 (izquierda) → pR ✓
-   Cabeza = top 40% de figura → visual 197px. Body queda fuera del contenedor. */
+/* Lados: img W=380 → H≈492px
+   rotate(+90deg): top (cabeza) → apunta a la DERECHA → pL (pared izq) ✓
+   rotate(-90deg): top (cabeza) → apunta a la IZQUIERDA → pR (pared der) ✓
+   Fórmula: pL x_cont = M+436-y_el → cabeza(y=0) en x=200, cuerpo off-screen izq
+            pR x_cont = M-56+y_el  → cabeza(y=0) en x=0,   cuerpo off-screen der */
 #pL  { left: 0; top: 38%; width: 200px; height: 380px; overflow: hidden; transform: translateX(-220px); }
-#pL img { width: 380px; transform: rotate(-90deg); margin-left: -239px; margin-top: -56px; }
+#pL img { width: 380px; transform: rotate(90deg); margin-left: -236px; margin-top: -56px; }
 #pL.show { transform: translateX(-15px); }
 
 #pR  { right: 0; top: 52%; width: 200px; height: 380px; overflow: hidden; transform: translateX(220px); }
-#pR img { width: 380px; transform: rotate(90deg); margin-left: 56px; margin-top: -56px; }
+#pR img { width: 380px; transform: rotate(-90deg); margin-left: 56px; margin-top: -56px; }
 #pR.show { transform: translateX(15px); }
 
 /* Abajo: cabeza = top 40% → translateY(60%) oculta el cuerpo bajo la pantalla */

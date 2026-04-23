@@ -790,44 +790,36 @@
     }
 
     /* ── PEEKING MICE ─────────────────────────────────────
-       <img> tags injected by JS. Strategy per edge:
-       • LEFT/RIGHT: show ~90% of mouse — only a sliver behind the wall.
-         RIGHT peeker flips the IMG (not the container) so transforms stay clean.
-       • BOTTOM: show top 75% (head visible for all orientations).
-       • TOP: show ~70% from below nav.
-       Pixel-based translate so % confusion is avoided.
+       Una sola imagen (mouse-peek.png). Lados: rotada para que la
+       cabeza apunte hacia dentro. Abajo: sólo asoma la cabeza.
     ──────────────────────────────────────────────────── */
     .peek {
       position: fixed;
       z-index: 800;
       pointer-events: none;
       transition: transform .85s cubic-bezier(.34,1.18,.64,1);
+      filter: drop-shadow(0 5px 14px rgba(74,55,40,.22));
     }
-    .peek img {
-      display: block;
-      height: auto;
-      filter: drop-shadow(0 6px 16px rgba(74,55,40,.22));
-    }
+    .peek img { display: block; height: auto; }
 
-    /* LEFT — slides in from left, only ~20px stays behind left wall */
-    #pL  { left: 0; top: 38%; width: 195px; transform: translateX(-200px); }
-    #pL img { width: 195px; }
-    #pL.show { transform: translateX(-20px); }
+    /* LEFT: rotate(90deg) → top imagen apunta a la DERECHA (hacia pantalla) ✓ */
+    #pL  { left: 0; top: 38%; width: 200px; height: 380px; overflow: hidden; transform: translateX(-220px); }
+    #pL img { width: 380px; transform: rotate(90deg); margin-left: -236px; margin-top: -56px; }
+    #pL.show { transform: translateX(-15px); }
 
-    /* RIGHT — flip applied per-mouse by JS based on direction */
-    #pR  { right: 0; top: 52%; width: 195px; transform: translateX(200px); }
-    #pR img { width: 195px; }
-    #pR.show { transform: translateX(20px); }
+    /* RIGHT: rotate(-90deg) → top imagen apunta a la IZQUIERDA (hacia pantalla) ✓ */
+    #pR  { right: 0; top: 52%; width: 200px; height: 380px; overflow: hidden; transform: translateX(220px); }
+    #pR img { width: 380px; transform: rotate(-90deg); margin-left: 56px; margin-top: -56px; }
+    #pR.show { transform: translateX(15px); }
 
-    /* BOTTOM-LEFT — slides up, shows top 75% of image (head area) */
-    #pBL { left: 12%; bottom: 0; width: 180px; transform: translateY(100%); }
-    #pBL img { width: 180px; }
-    #pBL.show { transform: translateY(25%); }
+    /* BOTTOM: translateY(60%) oculta cuerpo, asoma solo la cabeza */
+    #pBL { left: 12%; bottom: 0; width: 350px; transform: translateY(100%); }
+    #pBL img { width: 350px; }
+    #pBL.show { transform: translateY(60%); }
 
-    /* BOTTOM-RIGHT — same */
-    #pBR { right: 16%; bottom: 0; width: 180px; transform: translateY(100%); }
-    #pBR img { width: 180px; }
-    #pBR.show { transform: translateY(25%); }
+    #pBR { right: 16%; bottom: 0; width: 350px; transform: translateY(100%); }
+    #pBR img { width: 350px; }
+    #pBR.show { transform: translateY(60%); }
 
 
     /* ── SCROLL REVEAL ───────────────────────────── */
@@ -986,7 +978,7 @@
 <!-- ║    INTRO SCREEN      ║ -->
 <!-- ╚══════════════════════╝ -->
 <div id="siteIntro">
-  <img class="intro-mouse" src="img/mouse-hero-nobg.png" alt="Marie la Souris" />
+  <img class="intro-mouse" src="mice/mouse-01.png" alt="Marie la Souris" />
   <div class="intro-brand">Marie la Souris</div>
   <p class="intro-sub" data-i18n="intro.welcome">Bienvenue ♥</p>
   <button class="intro-skip" id="introSkip" data-i18n="intro.skip">Passer</button>
@@ -1087,7 +1079,7 @@
 
   <!-- Mouse — absolute, bottom-right of hero -->
   <div class="hero-mouse-wrap" id="heroMouseWrap">
-    <img id="heroMouseImg" src="img/mouse-hero-nobg.png" alt="Marie la Souris illustrée" />
+    <img id="heroMouseImg" src="mice/mouse-01.png" alt="Marie la Souris illustrée" />
   </div>
 
   <!-- Slide dots -->
@@ -1683,15 +1675,15 @@ const heroSlides = [
   { h1: { fr:'Petites mains,<br/>grandes découvertes', es:'Pequeñas manos,<br/>grandes descubrimientos', en:'Little hands,<br/>big discoveries' },
     sub: { fr:'Jouer, apprendre et sourire avec Marie la Souris', es:'Jugar, aprender y sonreír con Marie la Souris', en:'Play, learn and smile with Marie la Souris' },
     btn: { fr:'Découvrir nos produits', es:'Descubrir productos', en:'Discover our products' },
-    href: 'shop', mouse: 'img/mouse-hero-nobg.png' },
+    href: 'shop', mouse: 'mice/mouse-01.png' },
   { h1: { fr:'Fait avec amour,<br/>pour grandir ensemble', es:'Hecho con amor,<br/>para crecer juntos', en:'Made with love,<br/>to grow together' },
     sub: { fr:'Des ressources douces et créatives pour chaque enfant', es:'Recursos dulces y creativos para cada niño', en:'Gentle and creative resources for every child' },
     btn: { fr:'En savoir plus', es:'Saber más', en:'Learn more' },
-    href: 'about', mouse: 'img/mouse-hero-2.png' },
+    href: 'about', mouse: 'mice/mouse-04.png' },
   { h1: { fr:'Imprimable Gratuit', es:'Imprimible Gratis', en:'Free Printable' },
     sub: { fr:'Rejoignez notre communauté !', es:'¡Únete a nuestra comunidad!', en:'Join our community!' },
     btn: { fr:'Télécharger', es:'Descargar', en:'Download' },
-    href: '#contacto', mouse: 'img/mouse-hero-3.png' },
+    href: '#contacto', mouse: 'mice/mouse-05.png' },
 ];
 let currentSlide = 0;
 const dots = document.querySelectorAll('.hero-dots .dot');

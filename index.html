@@ -802,24 +802,26 @@
     }
     .peek img { display: block; height: auto; }
 
-    /* LEFT: rotate(90deg) → top imagen apunta a la DERECHA (hacia pantalla) ✓ */
-    #pL  { left: 0; top: 38%; width: 200px; height: 380px; overflow: hidden; transform: translateX(-220px); }
-    #pL img { width: 380px; transform: rotate(90deg); margin-left: -236px; margin-top: -56px; }
+    /* LEFT: rotate(90deg) → cabeza apunta DERECHA.
+       W=600 H≈776. y_chin≈32%×776=248. M_L=248-688=-440. Container width=248px. */
+    #pL  { left: 0; top: 35%; width: 248px; height: 600px; overflow: hidden; transform: translateX(-263px); }
+    #pL img { width: 600px; transform: rotate(90deg); margin-left: -440px; margin-top: -88px; }
     #pL.show { transform: translateX(-15px); }
 
-    /* RIGHT: rotate(-90deg) → top imagen apunta a la IZQUIERDA (hacia pantalla) ✓ */
-    #pR  { right: 0; top: 52%; width: 200px; height: 380px; overflow: hidden; transform: translateX(220px); }
-    #pR img { width: 380px; transform: rotate(-90deg); margin-left: 56px; margin-top: -56px; }
+    /* RIGHT: rotate(-90deg) → cabeza apunta IZQUIERDA.
+       x_cont=M_L-88+y_el. Chin(y=248) at x=248 → M_L=88. */
+    #pR  { right: 0; top: 50%; width: 248px; height: 600px; overflow: hidden; transform: translateX(263px); }
+    #pR img { width: 600px; transform: rotate(-90deg); margin-left: 88px; margin-top: -88px; }
     #pR.show { transform: translateX(15px); }
 
-    /* BOTTOM: translateY(60%) oculta cuerpo, asoma solo la cabeza */
-    #pBL { left: 12%; bottom: 0; width: 350px; transform: translateY(100%); }
-    #pBL img { width: 350px; }
-    #pBL.show { transform: translateY(60%); }
+    /* BOTTOM: translateY(68%) — muestra solo la cabeza (top 32%) */
+    #pBL { left: 12%; bottom: 0; width: 360px; transform: translateY(100%); }
+    #pBL img { width: 360px; }
+    #pBL.show { transform: translateY(68%); }
 
-    #pBR { right: 16%; bottom: 0; width: 350px; transform: translateY(100%); }
-    #pBR img { width: 350px; }
-    #pBR.show { transform: translateY(60%); }
+    #pBR { right: 16%; bottom: 0; width: 360px; transform: translateY(100%); }
+    #pBR img { width: 360px; }
+    #pBR.show { transform: translateY(68%); }
 
 
     /* ── SCROLL REVEAL ───────────────────────────── */

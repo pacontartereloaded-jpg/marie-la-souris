@@ -1833,69 +1833,18 @@ const revObs = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
 /* ──────────────────────────────────────────────────
-   PEEKING MICE — orientation-aware system
-   dir: 'r' = faces right, 'l' = faces left, 'f' = front/symmetric
-   ok:  which peekers this mouse can appear in
-   Flip logic:
-     pL (left edge)  → wants mouse facing RIGHT into screen
-                       'l' mice get flipped, 'r'/'f' shown as-is
-     pR (right edge) → wants mouse facing LEFT into screen
-                       'r' mice get flipped, 'l'/'f' shown as-is
-     pBL/pBR         → no flip (vertical orientation, any pose OK)
+   PEEKING MICE
 ────────────────────────────────────────────────── */
-const MICE = [
-  { f:'mice/mouse-01.png', dir:'f', ok:['pL','pR','pBL','pBR'] }, // frente simétrico
-  { f:'mice/mouse-02.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // corre →
-  { f:'mice/mouse-03.png', dir:'l', ok:['pL','pR','pBL','pBR'] }, // duerme, cabeza ←
-  { f:'mice/mouse-04.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // parado, mira →
-  { f:'mice/mouse-05.png', dir:'l', ok:['pL','pR','pBL','pBR'] }, // parado, mira ←
-  { f:'mice/mouse-06.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // salta →
-  { f:'mice/mouse-07.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // sentado, mira →
-  { f:'mice/mouse-08.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // trepa →
-  { f:'mice/mouse-09.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // acostado →
-  { f:'mice/mouse-10.png', dir:'r', ok:['pL']                       }, // ya se asoma ←, solo izquierdo
-  { f:'mice/mouse-11.png', dir:'f', ok:['pL','pR','pBL','pBR'] }, // frente, saludando
-  { f:'mice/mouse-12.png', dir:'l', ok:['pL','pR','pBL','pBR'] }, // mira ←
-  { f:'mice/mouse-13.png', dir:'l', ok:['pL','pR','pBL','pBR'] }, // mira ←
-  { f:'mice/mouse-14.png', dir:'f', ok:['pL','pR','pBL','pBR'] }, // frente, corazón
-  { f:'mice/mouse-15.png', dir:'f', ok:['pBL','pBR']                }, // solo cabeza arriba, solo abajo
-  { f:'mice/mouse-16.png', dir:'r', ok:['pL','pR','pBL','pBR'] }, // sentado, corazón, mira →
-];
-
-const SHOW_MS = 6000;
-const MIN_GAP = 8000;
-const MAX_GAP = 15000;
-
-const lastUsed = {};
-
-function pickMouse(id) {
-  const pool = MICE.filter(m => m.ok.includes(id) && m.f !== lastUsed[id]);
-  const pick = pool[Math.floor(Math.random() * pool.length)];
-  lastUsed[id] = pick.f;
-  return pick;
-}
-
-function shouldFlip(id, dir) {
-  if (id === 'pL') return dir === 'l'; // flip left-facing so it looks right (into screen)
-  if (id === 'pR') return dir === 'r'; // flip right-facing so it looks left (into screen)
-  return false;
-}
-
-const peekCfg = [
-  { id: 'pL',  init: 2500  },
-  { id: 'pR',  init: 9000  },
-  { id: 'pBL', init: 15500 },
-  { id: 'pBR', init: 22000 },
-];
+const PEEK_IMG = 'mice/mouse-peek.png';
+const SHOW_MS = 6000, MIN_GAP = 8000, MAX_GAP = 15000;
 
 function startPeek(id, initDelay) {
   setTimeout(function loop() {
     const el = document.getElementById(id);
+    if (!el) return;
     let img = el.querySelector('img');
     if (!img) { img = new Image(); img.alt = ''; el.appendChild(img); }
-    const mouse = pickMouse(id);
-    img.src = mouse.f;
-    img.style.transform = shouldFlip(id, mouse.dir) ? 'scaleX(-1)' : '';
+    img.src = PEEK_IMG;
     el.classList.add('show');
     setTimeout(() => {
       el.classList.remove('show');
@@ -1904,7 +1853,8 @@ function startPeek(id, initDelay) {
   }, initDelay);
 }
 
-peekCfg.forEach(p => startPeek(p.id, p.init));
+[{ id:'pL', init:2500 }, { id:'pR', init:9000 }, { id:'pBL', init:15500 }, { id:'pBR', init:22000 }]
+  .forEach(p => startPeek(p.id, p.init));
 
 </script>
 

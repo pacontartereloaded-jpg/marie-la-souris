@@ -622,42 +622,10 @@ const revObs = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
 /* ──────────────────────────────────────────────────
-   PEEKING MICE — orientation-aware system
+   PEEKING MICE
 ────────────────────────────────────────────────── */
-const MICE = [
-  { f:'mice/mouse-01.png', dir:'f', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-02.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-03.png', dir:'l', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-04.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-05.png', dir:'l', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-06.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-07.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-08.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-09.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-10.png', dir:'r', ok:['pR']                  },
-  { f:'mice/mouse-11.png', dir:'f', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-12.png', dir:'l', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-13.png', dir:'l', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-14.png', dir:'f', ok:['pL','pR','pBL','pBR'] },
-  { f:'mice/mouse-15.png', dir:'f', ok:['pBL','pBR']           },
-  { f:'mice/mouse-16.png', dir:'r', ok:['pL','pR','pBL','pBR'] },
-];
-
+const PEEK_IMG = 'mice/mouse-peek.png';
 const SHOW_MS = 6000, MIN_GAP = 8000, MAX_GAP = 15000;
-const lastUsed = {};
-
-function pickMouse(id) {
-  const pool = MICE.filter(m => m.ok.includes(id) && m.f !== lastUsed[id]);
-  const pick = pool[Math.floor(Math.random() * pool.length)];
-  lastUsed[id] = pick.f;
-  return pick;
-}
-
-function shouldFlip(id, dir) {
-  if (id === 'pL') return dir === 'l';
-  if (id === 'pR') return dir === 'r';
-  return false;
-}
 
 function startPeek(id, initDelay) {
   setTimeout(function loop() {
@@ -665,9 +633,7 @@ function startPeek(id, initDelay) {
     if (!el) return;
     let img = el.querySelector('img');
     if (!img) { img = new Image(); img.alt = ''; el.appendChild(img); }
-    const mouse = pickMouse(id);
-    img.src = mouse.f;
-    img.style.transform = shouldFlip(id, mouse.dir) ? 'scaleX(-1)' : '';
+    img.src = PEEK_IMG;
     el.classList.add('show');
     setTimeout(() => {
       el.classList.remove('show');

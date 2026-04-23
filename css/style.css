@@ -379,22 +379,25 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 .peek { position: fixed; z-index: 800; pointer-events: none; transition: transform .85s cubic-bezier(.34,1.18,.64,1); filter: drop-shadow(0 5px 14px rgba(74,55,40,.22)); }
 .peek img { display: block; height: auto; }
 
-/* Lados: cabeza rotada saliendo de la pared */
-#pL  { left: 0; top: 38%; width: 120px; height: 200px; overflow: hidden; transform: translateX(-140px); }
-#pL img { width: 200px; transform: rotate(-90deg); margin-left: -100px; margin-top: -30px; }
-#pL.show { transform: translateX(-10px); }
+/* Lados: cabeza rotada saliendo de la pared
+   rotate(-90deg) → top de imagen apunta a la DERECHA → pL (pared izquierda) ✓
+   rotate(+90deg) → top de imagen apunta a la IZQUIERDA → pR (pared derecha) ✓
+   img W=280 → H≈362px. margin-left centra la cabeza en el contenedor. */
+#pL  { left: 0; top: 38%; width: 200px; height: 280px; overflow: hidden; transform: translateX(-220px); }
+#pL img { width: 280px; transform: rotate(-90deg); margin-left: -122px; margin-top: -41px; }
+#pL.show { transform: translateX(-12px); }
 
-#pR  { right: 0; top: 52%; width: 130px; height: 200px; overflow: hidden; transform: translateX(150px); }
-#pR img { width: 200px; transform: rotate(90deg); margin-left: 30px; margin-top: -30px; }
-#pR.show { transform: translateX(10px); }
+#pR  { right: 0; top: 52%; width: 200px; height: 280px; overflow: hidden; transform: translateX(220px); }
+#pR img { width: 280px; transform: rotate(90deg); margin-left: 41px; margin-top: -41px; }
+#pR.show { transform: translateX(12px); }
 
 /* Abajo: cabeza saliendo desde el suelo */
-#pBL { left: 12%; bottom: 0; width: 180px; transform: translateY(100%); }
-#pBL img { width: 180px; }
+#pBL { left: 12%; bottom: 0; width: 220px; transform: translateY(100%); }
+#pBL img { width: 220px; }
 #pBL.show { transform: translateY(45%); }
 
-#pBR { right: 16%; bottom: 0; width: 180px; transform: translateY(100%); }
-#pBR img { width: 180px; }
+#pBR { right: 16%; bottom: 0; width: 220px; transform: translateY(100%); }
+#pBR img { width: 220px; }
 #pBR.show { transform: translateY(45%); }
 
 /* ── SCROLL REVEAL ───────────────────────────── */

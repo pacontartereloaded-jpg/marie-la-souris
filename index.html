@@ -340,16 +340,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1.2rem 1rem .15rem;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      padding: 1rem 1rem .05rem;
       overflow: hidden;
     }
     .botanical-divider img {
-      width: min(560px, 72vw);
+      width: clamp(150px, 18vw, 230px);
       height: auto;
       opacity: .9;
-      transform: rotate(-2deg);
       filter: drop-shadow(0 8px 16px rgba(74,55,40,.08));
     }
+    .botanical-divider img:nth-child(1) { transform: rotate(-4deg); }
+    .botanical-divider img:nth-child(2) { transform: rotate(1deg) translateY(-4px); }
+    .botanical-divider img:nth-child(3) { transform: rotate(4deg); }
     .wave-path { animation: waveMove 4s ease-in-out infinite alternate; transform-origin: center; }
     @keyframes waveMove {
       0%   { d: path("M0,32 C180,0 360,64 540,32 C720,0 900,64 1080,32 C1260,0 1440,48 1440,48 L1440,56 L0,56 Z"); }
@@ -845,8 +848,8 @@
       .hero-text { padding: 2rem 1.5rem 4rem; }
       .hero-text h1 { font-size: 1.9rem; }
       .hero-mouse-wrap { width: 120px; }
-      .botanical-divider { padding-top: .9rem; }
-      .botanical-divider img { width: 82vw; }
+      .botanical-divider { gap: .7rem; padding-top: .8rem; }
+      .botanical-divider img { width: 30vw; min-width: 110px; }
       .prod-grid { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
       .nl-left { padding: 2.5rem 1.5rem; }
       .nl-form { flex-direction: column; }
@@ -1099,6 +1102,8 @@
 </section>
 
 <div class="botanical-divider" aria-hidden="true">
+  <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+  <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
   <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
 </div>
 

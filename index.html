@@ -197,58 +197,13 @@
     .hero-photo {
       overflow: hidden;
     }
-    .hero-photo > img {
+    .hero-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
       display: block;
     }
-
-    /* ── HERO CARDS ─────────────────────────────── */
-    .hero-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 7px;
-      padding: 10px;
-      width: 100%;
-      height: 100%;
-      min-height: 460px;
-    }
-    .hcard {
-      background: #6E9D8C;
-      border-radius: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hcard-label {
-      font-family: 'Lato', sans-serif;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .07em;
-      color: #2C1A0E;
-      line-height: 1.15;
-      position: absolute;
-      font-size: clamp(.48rem, .9vw, .72rem);
-    }
-    .hcard--1 .hcard-label { top: 10px; left: 12px; }
-    .hcard--2 .hcard-label { right: 10px; top: 50%; transform: translateY(-50%); text-align: right; max-width: 58%; }
-    .hcard--3 .hcard-label { right: -20px; top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: center; white-space: nowrap; }
-    .hcard-svg-text {
-      position: absolute;
-      width: 100%;
-      bottom: 28%;
-      left: 0;
-    }
-    .hcard-mouse {
-      position: absolute;
-      bottom: 0;
-    }
-    .hcard--1 .hcard-mouse { left: -6%; width: 68%; transform: translateY(26%) rotate(-8deg); }
-    .hcard--2 .hcard-mouse { left: -4%; width: 36%; transform: translateY(32%); }
-    .hcard--3 .hcard-mouse { left: 50%; transform: translateX(-50%) translateY(28%); width: 60%; }
-    .hcard--4 .hcard-mouse { left: 50%; transform: translateX(-50%) translateY(20%); width: 66%; }
 
     .hero-text {
       display: flex;
@@ -885,9 +840,6 @@
     @media (max-width: 960px) {
       .hero { grid-template-columns: 1fr; }
       .hero-photo { height: 260px; }
-      .hero-cards { min-height: 260px; gap: 5px; padding: 6px; }
-      .hcard { border-radius: 10px; }
-      .hcard--3 .hcard-label { right: -16px; font-size: .42rem; }
       .hero-mouse-wrap { width: 150px; right: 1rem; }
       .prod-grid { grid-template-columns: 1fr 1fr; }
       .newsletter { grid-template-columns: 1fr; }
@@ -1114,35 +1066,9 @@
 <!-- ╚══════════════════════╝ -->
 <section class="hero" id="inicio">
 
-  <!-- Cards left -->
+  <!-- Photo left -->
   <div class="hero-photo">
-    <div class="hero-cards">
-      <!-- Card 1: text top-left, mouse bottom-left -->
-      <div class="hcard hcard--1">
-        <span class="hcard-label">MARIE LA<br>SOURIS</span>
-        <img class="hcard-mouse" src="mice/mouse-peek.png" alt="">
-      </div>
-      <!-- Card 2: text center-right, mouse bottom-left small -->
-      <div class="hcard hcard--2">
-        <span class="hcard-label">MARIE LA SOURIS</span>
-        <img class="hcard-mouse" src="mice/mouse-peek.png" alt="">
-      </div>
-      <!-- Card 3: text rotated right, mouse bottom-center -->
-      <div class="hcard hcard--3">
-        <span class="hcard-label">MARIE LA<br>SOURIS.COM</span>
-        <img class="hcard-mouse" src="mice/mouse-peek.png" alt="">
-      </div>
-      <!-- Card 4: text arched, mouse bottom-center -->
-      <div class="hcard hcard--4">
-        <svg class="hcard-svg-text" viewBox="0 0 100 42" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="arc4" d="M4,38 A46,46 0 0,1 96,38"/></defs>
-          <text font-family="Lato,sans-serif" font-weight="900" font-size="9.5" fill="#2C1A0E" letter-spacing="1.2" text-anchor="middle">
-            <textPath href="#arc4" startOffset="50%">MARIELASOURIS.COM</textPath>
-          </text>
-        </svg>
-        <img class="hcard-mouse" src="mice/mouse-peek.png" alt="">
-      </div>
-    </div>
+    <img src="img/hero-basket.jpg" alt="Panier de jouets pédagogiques" />
   </div>
 
   <!-- Text right -->

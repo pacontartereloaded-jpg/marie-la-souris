@@ -340,19 +340,27 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: clamp(1rem, 3vw, 2.5rem);
-      padding: 1rem 1rem .05rem;
+      padding: .75rem 0 .05rem;
       overflow: hidden;
     }
+    .botanical-divider-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 112vw;
+      margin-left: -6vw;
+    }
     .botanical-divider img {
-      width: clamp(150px, 18vw, 230px);
+      width: clamp(92px, 8.8vw, 136px);
       height: auto;
       opacity: .9;
+      margin-left: clamp(-34px, -2.2vw, -18px);
       filter: drop-shadow(0 8px 16px rgba(74,55,40,.08));
     }
-    .botanical-divider img:nth-child(1) { transform: rotate(-4deg); }
-    .botanical-divider img:nth-child(2) { transform: rotate(1deg) translateY(-4px); }
-    .botanical-divider img:nth-child(3) { transform: rotate(4deg); }
+    .botanical-divider img:first-child { margin-left: 0; }
+    .botanical-divider img:nth-child(3n+1) { transform: rotate(-5deg) translateY(2px); }
+    .botanical-divider img:nth-child(3n+2) { transform: rotate(2deg) translateY(-5px); }
+    .botanical-divider img:nth-child(3n) { transform: rotate(5deg) translateY(1px); }
     .wave-path { animation: waveMove 4s ease-in-out infinite alternate; transform-origin: center; }
     @keyframes waveMove {
       0%   { d: path("M0,32 C180,0 360,64 540,32 C720,0 900,64 1080,32 C1260,0 1440,48 1440,48 L1440,56 L0,56 Z"); }
@@ -848,8 +856,9 @@
       .hero-text { padding: 2rem 1.5rem 4rem; }
       .hero-text h1 { font-size: 1.9rem; }
       .hero-mouse-wrap { width: 120px; }
-      .botanical-divider { gap: .7rem; padding-top: .8rem; }
-      .botanical-divider img { width: 30vw; min-width: 110px; }
+      .botanical-divider { padding-top: .65rem; }
+      .botanical-divider-track { width: 170vw; margin-left: -35vw; }
+      .botanical-divider img { width: 82px; margin-left: -25px; }
       .prod-grid { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
       .nl-left { padding: 2.5rem 1.5rem; }
       .nl-form { flex-direction: column; }
@@ -1102,9 +1111,23 @@
 </section>
 
 <div class="botanical-divider" aria-hidden="true">
-  <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
-  <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
-  <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+  <div class="botanical-divider-track">
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+    <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+  </div>
 </div>
 
 <!-- ── Wave divider ── -->

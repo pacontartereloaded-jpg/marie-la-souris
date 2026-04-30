@@ -313,13 +313,6 @@
       to   { transform: translateY(-5px) rotate(2deg); }
     }
 
-    /* ── 1. FLOATING MOUSE ───────────────────────── */
-    @keyframes floatMouse {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-14px); }
-    }
-    #heroMouseImg { animation: floatMouse 3.8s ease-in-out infinite; }
-
     /* ── 3. PULSE CTA BUTTON ─────────────────────── */
     @keyframes ctaPulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(232,180,176,.55); }
@@ -1813,15 +1806,6 @@ const statsObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 const statsBar = document.querySelector('.stats-bar');
 if (statsBar) statsObs.observe(statsBar);
-
-/* ──────────────────────────────────────────────────
-   7. PARALLAX ON HERO MOUSE
-────────────────────────────────────────────────── */
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if (heroMouseWrap) heroMouseWrap.style.transform = `translateY(${y * .12}px)`;
-}, { passive: true });
-
 
 /* ──────────────────────────────────────────────────
    SCROLL REVEAL

@@ -1,11 +1,11 @@
 /* ── DESIGN TOKENS ──────────────────────────── */
 :root {
-  --cream:        #F5EAE0;
+  --cream:        #EAD7D0;
   --cream-light:  #FBF6F1;
   --cream-white:  #FDFAF7;
   --pink:         #E8B4B0;
   --pink-light:   #F2D8D5;
-  --pink-bg:      #EFD5D0;
+  --pink-bg:      #EAD7D0;
   --rose:         #B8807C;
   --rose-hover:   #A06E6A;
   --sage:         #9DB8A8;

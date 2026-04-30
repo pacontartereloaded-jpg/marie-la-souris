@@ -820,7 +820,7 @@
     #pR img { transform: translate(-69px, 301px) rotate(-90deg); }
     #pR.show { transform: translateX(68px); }
 
-    #pBL, #pBR { bottom: 0; width: 260px; height: 175px; transform: translateY(100%); }
+    #pBL, #pBR { bottom: 0; width: 260px; height: 140px; transform: translateY(100%); }
     #pBL img, #pBR img { margin-left: -50px; margin-top: -70px; }
     #pBL.show, #pBR.show { transform: translateY(0); }
 
@@ -871,7 +871,7 @@
       #pR img { transform: translate(-54px, 234px) rotate(-90deg); }
       #pL.show { transform: translateX(-48px); }
       #pR.show { transform: translateX(48px); }
-      #pBL, #pBR { width: 205px; height: 138px; }
+      #pBL, #pBR { width: 205px; height: 110px; }
       #pBL img, #pBR img { margin-left: -39px; margin-top: -54px; }
       #pBL { left: 4%; }
       #pBR { right: 4%; }
@@ -1847,25 +1847,25 @@ document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
    PEEKING MICE
 ────────────────────────────────────────────────── */
 const PEEK_IMG = 'mice/mouse-peek.png';
-const SHOW_MS = 6000, MIN_GAP = 8000, MAX_GAP = 15000;
+const SHOW_MS = 5000, PEEK_INTERVAL_MS = 24000;
+const peekIds = ['pL', 'pR', 'pBL', 'pBR'];
+let peekIndex = 0;
 
-function startPeek(id, initDelay) {
-  setTimeout(function loop() {
-    const el = document.getElementById(id);
-    if (!el) return;
-    let img = el.querySelector('img');
-    if (!img) { img = new Image(); img.alt = ''; el.appendChild(img); }
-    img.src = PEEK_IMG;
-    el.classList.add('show');
-    setTimeout(() => {
-      el.classList.remove('show');
-      setTimeout(loop, MIN_GAP + Math.random() * (MAX_GAP - MIN_GAP));
-    }, SHOW_MS);
-  }, initDelay);
+function showPeek(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  let img = el.querySelector('img');
+  if (!img) { img = new Image(); img.alt = ''; el.appendChild(img); }
+  img.src = PEEK_IMG;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), SHOW_MS);
 }
 
-[{ id:'pL', init:2500 }, { id:'pR', init:9000 }, { id:'pBL', init:15500 }, { id:'pBR', init:22000 }]
-  .forEach(p => startPeek(p.id, p.init));
+setTimeout(function loopPeek() {
+  showPeek(peekIds[peekIndex]);
+  peekIndex = (peekIndex + 1) % peekIds.length;
+  setTimeout(loopPeek, PEEK_INTERVAL_MS);
+}, 6000);
 
 </script>
 

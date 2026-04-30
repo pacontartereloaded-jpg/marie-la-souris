@@ -625,22 +625,22 @@ document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
    PEEKING MICE
 ────────────────────────────────────────────────── */
 const PEEK_IMG = 'mice/mouse-peek.png';
-const SHOW_MS = 6000, MIN_GAP = 8000, MAX_GAP = 15000;
+const SHOW_MS = 5000, PEEK_INTERVAL_MS = 24000;
+const peekIds = ['pL', 'pR', 'pBL', 'pBR'];
+let peekIndex = 0;
 
-function startPeek(id, initDelay) {
-  setTimeout(function loop() {
-    const el = document.getElementById(id);
-    if (!el) return;
-    let img = el.querySelector('img');
-    if (!img) { img = new Image(); img.alt = ''; el.appendChild(img); }
-    img.src = PEEK_IMG;
-    el.classList.add('show');
-    setTimeout(() => {
-      el.classList.remove('show');
-      setTimeout(loop, MIN_GAP + Math.random() * (MAX_GAP - MIN_GAP));
-    }, SHOW_MS);
-  }, initDelay);
+function showPeek(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  let img = el.querySelector('img');
+  if (!img) { img = new Image(); img.alt = ''; el.appendChild(img); }
+  img.src = PEEK_IMG;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), SHOW_MS);
 }
 
-[{ id:'pL', init:2500 }, { id:'pR', init:9000 }, { id:'pBL', init:15500 }, { id:'pBR', init:22000 }]
-  .forEach(p => startPeek(p.id, p.init));
+setTimeout(function loopPeek() {
+  showPeek(peekIds[peekIndex]);
+  peekIndex = (peekIndex + 1) % peekIds.length;
+  setTimeout(loopPeek, PEEK_INTERVAL_MS);
+}, 6000);

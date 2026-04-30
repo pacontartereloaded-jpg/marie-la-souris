@@ -790,38 +790,36 @@
     }
 
     /* ── PEEKING MICE ─────────────────────────────────────
-       Una sola imagen (mouse-peek.png). Lados: rotada para que la
-       cabeza apunte hacia dentro. Abajo: sólo asoma la cabeza.
+       Una sola imagen recortada con contenedores: laterales rotados hacia dentro,
+       inferiores mostrando sólo la cabeza/parte superior.
     ──────────────────────────────────────────────────── */
     .peek {
       position: fixed;
       z-index: 800;
       pointer-events: none;
+      overflow: hidden;
       transition: transform .85s cubic-bezier(.34,1.18,.64,1);
       filter: drop-shadow(0 5px 14px rgba(74,55,40,.22));
     }
-    .peek img { display: block; height: auto; }
+    .peek img { display: block; width: 360px; max-width: none; height: auto; }
 
-    /* LEFT: rotate(90deg) → cabeza apunta DERECHA.
-       W=600 H≈776. y_chin≈32%×776=248. M_L=248-688=-440. Container width=248px. */
-    #pL  { left: 0; top: 35%; width: 248px; height: 600px; overflow: hidden; transform: translateX(-263px); }
-    #pL img { width: 600px; transform: rotate(90deg); margin-left: -440px; margin-top: -88px; }
-    #pL.show { transform: translateX(-15px); }
+    #pL, #pR { top: 38%; width: 230px; height: 260px; }
+    #pL img, #pR img { position: absolute; transform-origin: top left; }
 
-    /* RIGHT: rotate(-90deg) → cabeza apunta IZQUIERDA.
-       x_cont=M_L-88+y_el. Chin(y=248) at x=248 → M_L=88. */
-    #pR  { right: 0; top: 50%; width: 248px; height: 600px; overflow: hidden; transform: translateX(263px); }
-    #pR img { width: 600px; transform: rotate(-90deg); margin-left: 88px; margin-top: -88px; }
-    #pR.show { transform: translateX(15px); }
+    #pL  { left: 0; transform: translateX(-100%); }
+    #pL img { transform: translate(326px, -60px) rotate(90deg); }
+    #pL.show { transform: translateX(-18px); }
 
-    /* BOTTOM: translateY(68%) — muestra solo la cabeza (top 32%) */
-    #pBL { left: 12%; bottom: 0; width: 360px; transform: translateY(100%); }
-    #pBL img { width: 360px; }
-    #pBL.show { transform: translateY(68%); }
+    #pR  { right: 0; transform: translateX(100%); }
+    #pR img { transform: translate(-69px, 301px) rotate(-90deg); }
+    #pR.show { transform: translateX(18px); }
 
-    #pBR { right: 16%; bottom: 0; width: 360px; transform: translateY(100%); }
-    #pBR img { width: 360px; }
-    #pBR.show { transform: translateY(68%); }
+    #pBL, #pBR { bottom: 0; width: 260px; height: 235px; transform: translateY(100%); }
+    #pBL img, #pBR img { margin-left: -50px; margin-top: -70px; }
+    #pBL.show, #pBR.show { transform: translateY(0); }
+
+    #pBL { left: 12%; }
+    #pBR { right: 16%; }
 
 
     /* ── SCROLL REVEAL ───────────────────────────── */
@@ -859,6 +857,14 @@
       .ft-grid { grid-template-columns: 1fr; gap: 2rem; }
       .tagline { padding: 2.5rem 2rem; }
       .branch-l, .branch-r { display: none; }
+      .peek img { width: 280px; }
+      #pL, #pR { width: 180px; height: 205px; }
+      #pL img { transform: translate(254px, -47px) rotate(90deg); }
+      #pR img { transform: translate(-54px, 234px) rotate(-90deg); }
+      #pBL, #pBR { width: 205px; height: 183px; }
+      #pBL img, #pBR img { margin-left: -39px; margin-top: -54px; }
+      #pBL { left: 4%; }
+      #pBR { right: 4%; }
     }
 
     /* ── NOTRE HISTOIRE ─────────────────────────── */

@@ -414,7 +414,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 .hist-val-icon img { width: 70px; height: auto; object-fit: contain; }
 .hist-icon-branch img { width: 52px; }
 .hist-icon-heart svg { width: 68px; height: 68px; }
-.hist-icon-puzzle svg { width: 70px; height: 70px; transform: rotate(16deg); }
+.hist-icon-puzzle svg { width: 70px; height: 70px; transform: rotate(-10deg); }
 .hist-val-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--brown); margin-bottom: .25rem; }
 .hist-val-text p { font-size: .88rem; color: var(--brown-mid); margin: 0; line-height: 1.6; }
 

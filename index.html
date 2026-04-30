@@ -8,7 +8,7 @@
   <!-- v3 -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ── DESIGN TOKENS ──────────────────────────── */
@@ -517,6 +517,14 @@
       background: var(--rose-hover);
       transform: translateY(-2px);
     }
+    .btn-sage {
+      background: #A8B5A0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem !important;
+      letter-spacing: .08em;
+      padding: .68rem 1.8rem !important;
+    }
+    .btn-sage:hover { background: #96A58D; }
 
     /* ── TAGLINE ─────────────────────────────────── */
     .tagline {
@@ -1178,7 +1186,7 @@
 
   <p class="sparks">+ + + + + + +</p>
   <h2 data-i18n="tagline.h2">Jouer pour apprendre, grandir en douceur</h2>
-  <a href="/shop" class="btn-rose" style="font-size:.82rem;padding:.68rem 1.8rem;" data-i18n="tagline.btn">En savoir plus</a>
+  <a href="/shop" class="btn-rose btn-sage" data-i18n="tagline.btn">En savoir plus</a>
 
 </section>
 
@@ -1190,7 +1198,7 @@
 
   <div class="sec-head reveal">
     <h2 data-i18n="prod.title">Nos coups de c&#339;ur</h2>
-    <p data-i18n="prod.sub">Apprendre tout en s'amusant &#129293;</p>
+    <p data-i18n="prod.sub">Apprendre tout en s'amusant</p>
   </div>
 
   <div class="prod-grid">
@@ -1264,7 +1272,7 @@
   <div class="historia-text">
     <h2 data-i18n="hist.h2">Notre histoire ♥</h2>
     <p data-i18n="hist.body1">Marie la Souris a été créée pour répondre à un besoin réel : offrir aux enfants un apprentissage ludique, simple et efficace.</p>
-    <p data-i18n="hist.body2">Pensés pour les enfants de 2 à 7 ans, nos jeux éducatifs aident à développer les compétences essentielles tout en s'amusant.</p>
+    <p data-i18n="hist.body2">Pensés pour les enfants de 0 à 7 ans, nos jeux éducatifs aident à développer les compétences essentielles tout en s'amusant.</p>
     <p data-i18n="hist.body3">Parce qu'apprendre ne devrait jamais être une contrainte, mais une expérience naturelle et motivante.</p>
     <a href="/shop" class="btn-rose" data-i18n="hist.btn">Voir nos créations</a>
   </div>
@@ -1320,7 +1328,7 @@
         <span data-i18n="faq.q1">À qui s'adressent vos produits ?</span>
         <span class="faq-chevron">▼</span>
       </button>
-      <div class="faq-a" data-i18n="faq.a1">Nos produits sont conçus pour les enfants de 2 à 7 ans, mais ils conviennent également aux enseignants, éducateurs et tout parent souhaitant enrichir le quotidien de son enfant.</div>
+      <div class="faq-a" data-i18n="faq.a1">Nos produits sont conçus pour les enfants de 0 à 7 ans, mais ils conviennent également aux enseignants, éducateurs et tout parent souhaitant enrichir le quotidien de son enfant.</div>
     </div>
 
     <div class="faq-item reveal">
@@ -1489,7 +1497,7 @@ const T = {
     'tagline.h2':     'Jouer pour apprendre, grandir en douceur',
     'tagline.btn':    'En savoir plus',
     'prod.title':     'Nos coups de c&#339;ur',
-    'prod.sub':       "Apprendre tout en s'amusant &#129293;",
+    'prod.sub':       "Apprendre tout en s'amusant",
     'badge.new':      'Nouveau',
     'nl.title':       'Imprimable Gratuit',
     'nl.sub':         "Recevez un joli imprimable offert en vous inscrivant à notre newsletter!",
@@ -1514,7 +1522,7 @@ const T = {
     'ft.made':        'Fait avec &#9829; pour les tout-petits',
     'hist.h2':    'Notre histoire &#9829;',
     'hist.body1': "Marie la Souris a été créée pour répondre à un besoin réel : offrir aux enfants un apprentissage ludique, simple et efficace.",
-    'hist.body2': "Pensés pour les enfants de 2 à 7 ans, nos jeux éducatifs aident à développer les compétences essentielles tout en s'amusant.",
+    'hist.body2': "Pensés pour les enfants de 0 à 7 ans, nos jeux éducatifs aident à développer les compétences essentielles tout en s'amusant.",
     'hist.body3': "Parce qu'apprendre ne devrait jamais être une contrainte, mais une expérience naturelle et motivante.",
     'hist.btn':   'Voir nos créations',
     'hist.v1t':   'Éducation bienveillante',
@@ -1526,7 +1534,7 @@ const T = {
     'faq.title':  'Questions fréquentes',
     'faq.sub':    'Tout ce que vous devez savoir avant de commencer ✨',
     'faq.q1':     "À qui s'adressent vos produits ?",
-    'faq.a1':     "Nos produits sont conçus pour les enfants de 2 à 7 ans, mais ils conviennent également aux enseignants, éducateurs et tout parent souhaitant enrichir le quotidien de son enfant.",
+    'faq.a1':     "Nos produits sont conçus pour les enfants de 0 à 7 ans, mais ils conviennent également aux enseignants, éducateurs et tout parent souhaitant enrichir le quotidien de son enfant.",
     'faq.q2':     "Vos produits sont-ils numériques ou physiques ?",
     'faq.a2':     "Tous nos produits sont des fichiers numériques (PDF) à télécharger et imprimer chez vous. Vous recevez le fichier immédiatement après l'achat, à imprimer autant de fois que vous le souhaitez !",
     'faq.q3':     "Comment reçois-je ma commande ?",
@@ -1553,7 +1561,7 @@ const T = {
     'tagline.h2':     'Jugar para aprender, crecer con dulzura',
     'tagline.btn':    'Saber más',
     'prod.title':     'Nuestros favoritos',
-    'prod.sub':       'Aprender mientras te diviertes &#129293;',
+    'prod.sub':       'Aprender mientras te diviertes',
     'badge.new':      'Nuevo',
     'nl.title':       'Imprimible Gratis',
     'nl.sub':         '¡Recibe un imprimible especial al inscribirte en nuestra newsletter!',
@@ -1578,7 +1586,7 @@ const T = {
     'ft.made':        'Hecho con &#9829; para los más pequeños',
     'hist.h2':    'Nuestra historia &#9829;',
     'hist.body1': "Marie la Souris fue creada para responder a una necesidad real: ofrecer a los niños un aprendizaje lúdico, simple y eficaz.",
-    'hist.body2': "Pensados para niños de 2 a 7 años, nuestros juegos educativos ayudan a desarrollar habilidades esenciales mientras se divierten.",
+    'hist.body2': "Pensados para niños de 0 a 7 años, nuestros juegos educativos ayudan a desarrollar habilidades esenciales mientras se divierten.",
     'hist.body3': "Porque aprender nunca debería ser una obligación, sino una experiencia natural y motivadora.",
     'hist.btn':   'Ver nuestras creaciones',
     'hist.v1t':   'Educación respetuosa',
@@ -1590,7 +1598,7 @@ const T = {
     'faq.title':  'Preguntas frecuentes',
     'faq.sub':    'Todo lo que necesitas saber antes de empezar ✨',
     'faq.q1':     '¿A quién van dirigidos sus productos?',
-    'faq.a1':     'Nuestros productos están diseñados para niños de 2 a 7 años, pero también son perfectos para maestros, educadores y cualquier padre que quiera enriquecer el día a día de su hijo.',
+    'faq.a1':     'Nuestros productos están diseñados para niños de 0 a 7 años, pero también son perfectos para maestros, educadores y cualquier padre que quiera enriquecer el día a día de su hijo.',
     'faq.q2':     '¿Sus productos son digitales o físicos?',
     'faq.a2':     'Todos nuestros productos son archivos digitales (PDF) para descargar e imprimir en casa. Recibes el archivo inmediatamente después de la compra, ¡imprimible las veces que quieras!',
     'faq.q3':     '¿Cómo recibo mi pedido?',
@@ -1617,7 +1625,7 @@ const T = {
     'tagline.h2':     'Play to learn, grow gently',
     'tagline.btn':    'Learn more',
     'prod.title':     'Our favorites',
-    'prod.sub':       'Learning while having fun &#129293;',
+    'prod.sub':       'Learning while having fun',
     'badge.new':      'New',
     'nl.title':       'Free Printable',
     'nl.sub':         'Receive a lovely printable gift when you join our newsletter!',
@@ -1642,7 +1650,7 @@ const T = {
     'ft.made':        'Made with &#9829; for little ones',
     'hist.h2':    'Our story &#9829;',
     'hist.body1': "Marie la Souris was created to answer a real need: offering children playful, simple and effective learning.",
-    'hist.body2': "Designed for children aged 2 to 7, our educational games help develop essential skills while having fun.",
+    'hist.body2': "Designed for children aged 0 to 7, our educational games help develop essential skills while having fun.",
     'hist.body3': "Because learning should never feel like a constraint, but like a natural and motivating experience.",
     'hist.btn':   'See our creations',
     'hist.v1t':   'Respectful education',
@@ -1654,7 +1662,7 @@ const T = {
     'faq.title':  'Frequently asked questions',
     'faq.sub':    'Everything you need to know before you start ✨',
     'faq.q1':     'Who are your products for?',
-    'faq.a1':     "Our products are designed for children aged 2 to 7, but are also perfect for teachers, educators and any parent wanting to enrich their child's everyday life.",
+    'faq.a1':     "Our products are designed for children aged 0 to 7, but are also perfect for teachers, educators and any parent wanting to enrich their child's everyday life.",
     'faq.q2':     'Are your products digital or physical?',
     'faq.a2':     'All our products are digital files (PDF) to download and print at home. You receive the file immediately after purchase, printable as many times as you like!',
     'faq.q3':     'How do I receive my order?',

@@ -335,6 +335,21 @@
     /* ── 9. ANIMATED WAVE DIVIDER ────────────────── */
     .wave-divider { line-height: 0; overflow: hidden; margin-top: -2px; }
     .wave-divider svg { display:block; width:100%; }
+    .botanical-divider {
+      background: var(--cream);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.2rem 1rem .15rem;
+      overflow: hidden;
+    }
+    .botanical-divider img {
+      width: min(560px, 72vw);
+      height: auto;
+      opacity: .9;
+      transform: rotate(-2deg);
+      filter: drop-shadow(0 8px 16px rgba(74,55,40,.08));
+    }
     .wave-path { animation: waveMove 4s ease-in-out infinite alternate; transform-origin: center; }
     @keyframes waveMove {
       0%   { d: path("M0,32 C180,0 360,64 540,32 C720,0 900,64 1080,32 C1260,0 1440,48 1440,48 L1440,56 L0,56 Z"); }
@@ -830,6 +845,8 @@
       .hero-text { padding: 2rem 1.5rem 4rem; }
       .hero-text h1 { font-size: 1.9rem; }
       .hero-mouse-wrap { width: 120px; }
+      .botanical-divider { padding-top: .9rem; }
+      .botanical-divider img { width: 82vw; }
       .prod-grid { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
       .nl-left { padding: 2.5rem 1.5rem; }
       .nl-form { flex-direction: column; }
@@ -1080,6 +1097,10 @@
   </div>
 
 </section>
+
+<div class="botanical-divider" aria-hidden="true">
+  <img src="img/botanical-leaves/botanical-branch-02.png" alt="" loading="lazy" />
+</div>
 
 <!-- ── Wave divider ── -->
 <div class="wave-divider" style="background:var(--cream)">

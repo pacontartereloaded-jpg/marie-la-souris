@@ -87,26 +87,21 @@
 
     .nav-center {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: center;
       padding: 0 2rem;
     }
+    .nav-center a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .nav-mouse {
-      width: 72px;
-      height: 72px;
+      width: 108px;
+      height: 108px;
       object-fit: contain;
-      margin-bottom: -4px;
       transition: width .3s ease, height .3s ease;
     }
-    .nav-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.55rem;
-      font-weight: 400;
-      letter-spacing: .04em;
-      color: var(--brown);
-      white-space: nowrap;
-    }
-
     .nav-right {
       display: flex;
       align-items: center;
@@ -846,8 +841,7 @@
       .nav-left, .nav-blog, .nav-search { display: none; }
       .nav-inner { grid-template-columns: auto 1fr auto; }
       .nav-center { padding: 0 .5rem; }
-      .nav-mouse { width: 50px; height: 50px; }
-      .nav-brand { font-size: 1.1rem; }
+      .nav-mouse { width: 76px; height: 76px; }
       .hero-text { padding: 2rem 1.5rem 4rem; }
       .hero-text h1 { font-size: 1.9rem; }
       .hero-mouse-wrap { width: 120px; }
@@ -1010,8 +1004,9 @@
     </ul>
 
     <div class="nav-center">
-      <img class="nav-mouse" src="img/mouse-logo-nobg.png" alt="Marie la Souris" />
-      <div class="nav-brand">Marie la Souris</div>
+      <a href="/" aria-label="Marie la Souris">
+        <img class="nav-mouse" src="img/mouse-logo-nobg.png" alt="Marie la Souris" />
+      </a>
     </div>
 
     <div class="nav-right">

@@ -78,12 +78,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 168px;
       padding: 0 2rem;
     }
     .nav-center a {
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 100%;
     }
     .nav-mouse {
       width: 246px;
@@ -823,7 +825,7 @@
     @media (max-width: 620px) {
       .nav-left, .nav-blog, .nav-search { display: none; }
       .nav-inner { grid-template-columns: auto 1fr auto; }
-      .nav-center { padding: 0 .5rem; }
+      .nav-center { height: 112px; padding: 0 .5rem; }
       .nav-mouse { width: 162px; height: 162px; transform: translateY(14px); }
       .hero-text { padding: 2rem 1.5rem 4rem; }
       .hero-text h1 { font-size: 1.9rem; }

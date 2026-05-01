@@ -56,7 +56,7 @@ nav {
 .nav-left a:hover { color: var(--brown); }
 .nav-center { display: flex; align-items: center; justify-content: center; height: 168px; padding: 0 2rem; }
 .nav-center a { display: flex; align-items: center; justify-content: center; height: 100%; }
-.nav-mouse { width: 246px; height: 246px; object-fit: contain; transform: translateY(22px); }
+.nav-mouse { width: 310px; height: 310px; object-fit: contain; transform: translateY(58px); }
 .nav-right { display: flex; align-items: center; justify-content: flex-end; gap: 1.2rem; }
 .nav-blog {
   font-size: .74rem;
@@ -580,7 +580,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
   .nav-left, .nav-blog, .nav-search { display: none; }
   .nav-inner { grid-template-columns: auto 1fr auto; }
   .nav-center { height: 112px; padding: 0 .5rem; }
-  .nav-mouse { width: 162px; height: 162px; transform: translateY(14px); }
+  .nav-mouse { width: 205px; height: 205px; transform: translateY(38px); }
   .hero-text { padding: 2rem 1.5rem 4rem; }
   .hero-text h1 { font-size: 1.9rem; }
   .prod-grid { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }

@@ -260,7 +260,7 @@ nav {
 }
 .sparks { font-size: .68rem; letter-spacing: .32em; color: var(--brown-fade); opacity: .55; margin-bottom: 1.3rem; }
 .branch-svg { position: absolute; top: 50%; width: 220px; opacity: .76; pointer-events: none; }
-.branch-l { left: .8rem; transform: translateY(-50%) scaleY(-1); }
+.branch-l { left: .8rem; transform: translateY(-50%) scaleX(-1); }
 .branch-r { right: .8rem; transform: translateY(-50%); }
 
 /* ── PRODUCTS ────────────────────────────────── */

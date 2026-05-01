@@ -375,11 +375,11 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 
 #pL  { left: 0; transform: translateX(-100%); }
 #pL img { transform: translate(326px, -60px) rotate(90deg); }
-#pL.show { transform: translateX(-68px); }
+#pL.show { transform: translateX(-125px); }
 
 #pR  { right: 0; transform: translateX(100%); }
 #pR img { transform: translate(-69px, 301px) rotate(-90deg); }
-#pR.show { transform: translateX(68px); }
+#pR.show { transform: translateX(125px); }
 
 #pBL, #pBR { bottom: 0; width: 260px; height: 140px; transform: translateY(100%); }
 #pBL img, #pBR img { margin-left: -50px; margin-top: -70px; }
@@ -593,8 +593,8 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
   #pL, #pR { width: 180px; height: 180px; }
   #pL img { transform: translate(254px, -47px) rotate(90deg); }
   #pR img { transform: translate(-54px, 234px) rotate(-90deg); }
-  #pL.show { transform: translateX(-48px); }
-  #pR.show { transform: translateX(48px); }
+  #pL.show { transform: translateX(-92px); }
+  #pR.show { transform: translateX(92px); }
   #pBL, #pBR { width: 205px; height: 110px; }
   #pBL img, #pBR img { margin-left: -39px; margin-top: -54px; }
   #pBL { left: 4%; }

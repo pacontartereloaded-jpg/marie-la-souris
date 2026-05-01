@@ -273,18 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ──────────────────────────────────────────────────
-   NAV LOGO ON SCROLL
-────────────────────────────────────────────────── */
-let mainNav = document.querySelector('nav');
-function updateNavLogo() {
-  mainNav = mainNav || document.querySelector('nav');
-  if (!mainNav) return;
-  mainNav.classList.toggle('nav-scrolled', window.scrollY > 24);
-}
-updateNavLogo();
-window.addEventListener('scroll', updateNavLogo, { passive: true });
-
-/* ──────────────────────────────────────────────────
    CART DRAWER
 ────────────────────────────────────────────────── */
 let cart = JSON.parse(localStorage.getItem('mls_cart') || '[]');

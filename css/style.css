@@ -138,7 +138,7 @@ nav {
   border-bottom: 1px solid rgba(74,55,40,.06);
 }
 .page-header h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Alice', serif;
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 300;
   color: var(--brown);
@@ -251,7 +251,7 @@ nav {
   overflow: hidden;
 }
 .tagline h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Alice', serif;
   font-size: clamp(1.3rem, 2.5vw, 1.9rem);
   font-weight: 300;
   color: var(--brown);
@@ -267,7 +267,7 @@ nav {
 .products { background: var(--cream); padding: 4rem 2rem 4.5rem; }
 .sec-head { text-align: center; margin-bottom: 2.4rem; }
 .sec-head h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Alice', serif;
   font-size: clamp(1.7rem, 3vw, 2.4rem);
   font-weight: 400;
   color: var(--brown);
@@ -321,7 +321,7 @@ nav {
 }
 .pwish:hover { transform: scale(1.18); }
 .prod-info { padding: .85rem .15rem 0; }
-.prod-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; color: var(--brown); margin-bottom: .3rem; }
+.prod-name { font-family: 'Alice', serif; font-size: 1.05rem; font-weight: 400; color: var(--brown); margin-bottom: .3rem; }
 .prod-hearts { color: var(--pink); font-size: .7rem; letter-spacing: .08em; margin-bottom: .35rem; }
 .prod-bottom { display: flex; align-items: center; justify-content: space-between; }
 .prod-price { font-size: .88rem; font-weight: 700; color: var(--brown); }
@@ -332,7 +332,7 @@ nav {
 /* ── NEWSLETTER ──────────────────────────────── */
 .newsletter { display: grid; grid-template-columns: 1fr 1fr; min-height: 300px; }
 .nl-left { background: var(--pink-bg); padding: 4rem 3.5rem; display: flex; flex-direction: column; justify-content: center; }
-.nl-left h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 2.6vw, 2.2rem); font-weight: 400; color: var(--brown); margin-bottom: .6rem; }
+.nl-left h2 { font-family: 'Alice', serif; font-size: clamp(1.7rem, 2.6vw, 2.2rem); font-weight: 400; color: var(--brown); margin-bottom: .6rem; }
 .nl-left p { font-size: .87rem; color: var(--brown-mid); line-height: 1.65; margin-bottom: 1.6rem; max-width: 290px; }
 .nl-form { display: flex; gap: .6rem; max-width: 360px; }
 .nl-form input {
@@ -355,7 +355,7 @@ nav {
 /* ── FOOTER ──────────────────────────────────── */
 footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2rem; }
 .ft-grid { max-width: 1100px; margin: 0 auto 2.5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
-.ft-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: .8rem; color: var(--cream-light); }
+.ft-logo { font-family: 'Alice', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: .8rem; color: var(--cream-light); }
 .ft-brand p { font-size: .82rem; color: var(--brown-fade); line-height: 1.7; margin-bottom: 1.2rem; }
 .socials { display: flex; gap: .6rem; }
 .sb { width: 33px; height: 33px; border-radius: 50%; background: rgba(255,255,255,.1); border: none; cursor: pointer; color: var(--cream); font-size: .9rem; display: flex; align-items: center; justify-content: center; transition: background .2s; }
@@ -403,7 +403,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
   gap: 4rem;
   align-items: center;
 }
-.historia-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--brown); margin-bottom: 1.2rem; line-height: 1.25; }
+.historia-text h2 { font-family: 'Alice', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--brown); margin-bottom: 1.2rem; line-height: 1.25; }
 .historia-text p { color: var(--brown-mid); line-height: 1.85; font-size: .97rem; margin-bottom: 1rem; }
 .historia-text .btn-rose { margin-top: .8rem; display: inline-block; }
 .historia-values { display: flex; flex-direction: column; gap: 1.4rem; }
@@ -413,7 +413,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 .hist-icon-branch img { width: 52px; }
 .hist-icon-heart svg { width: 68px; height: 68px; }
 .hist-icon-puzzle svg { width: 70px; height: 70px; transform: rotate(-10deg); }
-.hist-val-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--brown); margin-bottom: .25rem; }
+.hist-val-text h4 { font-family: 'Alice', serif; font-size: 1.05rem; font-weight: 600; color: var(--brown); margin-bottom: .25rem; }
 .hist-val-text p { font-size: .88rem; color: var(--brown-mid); margin: 0; line-height: 1.6; }
 
 /* ── FAQ ────────────────────────────────────── */
@@ -421,7 +421,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 .faq-section .sec-head { margin-bottom: 2.5rem; }
 .faq-wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
 .faq-item { background: var(--cream-white); border-radius: 12px; border: 1px solid rgba(74,55,40,.07); overflow: hidden; }
-.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.1rem 1.4rem; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--brown); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.1rem 1.4rem; font-family: 'Alice', serif; font-size: 1.05rem; font-weight: 600; color: var(--brown); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .faq-q:hover { background: var(--cream); }
 .faq-chevron { font-size: .75rem; color: var(--rose); transition: transform .3s ease; flex-shrink: 0; }
 .faq-item.open .faq-chevron { transform: rotate(180deg); }
@@ -468,7 +468,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
   align-self: flex-start;
 }
 .featured-info h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Alice', serif;
   font-size: clamp(1.6rem, 2.5vw, 2.1rem);
   font-weight: 300;
   color: var(--brown);
@@ -537,7 +537,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
   text-transform: uppercase;
 }
 .pli-info h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Alice', serif;
   font-size: 1.25rem;
   font-weight: 400;
   color: var(--brown);
@@ -637,7 +637,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
   border-bottom: 1px solid rgba(74,55,40,.08);
 }
 .cart-head h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Alice', serif;
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--brown);
@@ -695,7 +695,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 .cart-item-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cart-item-info { min-width: 0; }
 .cart-item-name {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Alice', serif;
   font-size: .95rem;
   font-weight: 400;
   color: var(--brown);
@@ -747,7 +747,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
   margin-bottom: 1rem;
 }
 .cart-total-label { font-size: .85rem; color: var(--brown-mid); text-transform: uppercase; letter-spacing: .06em; }
-.cart-total-price { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--brown); }
+.cart-total-price { font-family: 'Alice', serif; font-size: 1.5rem; font-weight: 400; color: var(--brown); }
 .cart-checkout {
   width: 100%;
   padding: .85rem;

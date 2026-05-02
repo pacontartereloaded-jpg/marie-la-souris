@@ -1,25 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Left ear -->
-  <ellipse cx="16" cy="18" rx="11" ry="11" fill="#C4A882"/>
-  <ellipse cx="16" cy="18" rx="7" ry="7" fill="#F0C4BB"/>
-  <!-- Right ear -->
-  <ellipse cx="48" cy="18" rx="11" ry="11" fill="#C4A882"/>
-  <ellipse cx="48" cy="18" rx="7" ry="7" fill="#F0C4BB"/>
-  <!-- Head -->
-  <ellipse cx="32" cy="36" rx="22" ry="20" fill="#D4B896"/>
-  <!-- Eyes -->
-  <circle cx="24" cy="32" r="4" fill="#4A3728"/>
-  <circle cx="40" cy="32" r="4" fill="#4A3728"/>
-  <circle cx="25.2" cy="30.8" r="1.4" fill="#fff"/>
-  <circle cx="41.2" cy="30.8" r="1.4" fill="#fff"/>
-  <!-- Nose -->
-  <ellipse cx="32" cy="41" rx="3.5" ry="2.5" fill="#E8A0A0"/>
-  <!-- Mouth -->
-  <path d="M29 44 Q32 47 35 44" stroke="#9A6B5A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <!-- Whiskers left -->
-  <line x1="28" y1="41" x2="12" y2="39" stroke="#9A6B5A" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
-  <line x1="28" y1="43" x2="12" y2="44" stroke="#9A6B5A" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
-  <!-- Whiskers right -->
-  <line x1="36" y1="41" x2="52" y2="39" stroke="#9A6B5A" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
-  <line x1="36" y1="43" x2="52" y2="44" stroke="#9A6B5A" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <path d="M20 51C11 46 3 49 4 56" fill="none" stroke="#9F8B78" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="33" cy="42" rx="19" ry="20" fill="#BBA58D"/>
+  <ellipse cx="45" cy="21" rx="13" ry="15" transform="rotate(27 45 21)" fill="#BBA58D"/>
+  <ellipse cx="30" cy="26" rx="9" ry="7" transform="rotate(-24 30 26)" fill="#9F8B78"/>
+  <ellipse cx="47" cy="36" rx="8" ry="10" transform="rotate(-25 47 36)" fill="#9F8B78"/>
+  <path d="M49 44C52 39 52 33 49 32C46 31 44 38 42 45" fill="#DAB2AA"/>
+  <path d="M42 16L35 6M44 16L38 4M53 24L62 25M52 27L61 34" stroke="#CDBFB5" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="52" cy="16" rx="4" ry="6" transform="rotate(-48 52 16)" fill="#DAB2AA"/>
+  <ellipse cx="50" cy="27" rx="3" ry="5" transform="rotate(28 50 27)" fill="#DAB2AA"/>
+  <path d="M47 22C44 22 42 27 44 30" stroke="#4A3728" stroke-width="2.2" fill="none" stroke-linecap="round"/>
 </svg>

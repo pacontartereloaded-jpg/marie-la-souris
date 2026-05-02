@@ -51,6 +51,7 @@ nav {
   letter-spacing: .09em;
   text-transform: uppercase;
   color: var(--brown-mid);
+  white-space: nowrap;
   transition: color .2s;
 }
 .nav-left a:hover { color: var(--brown); }

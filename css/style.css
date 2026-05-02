@@ -227,13 +227,13 @@ nav {
 }
 .btn-rose:hover { background: var(--rose-hover); transform: translateY(-2px); }
 .btn-sage {
-  background: #A8B5A0;
+  background: var(--sage-badge);
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.05rem !important;
   letter-spacing: .08em;
   padding: .68rem 1.8rem !important;
 }
-.btn-sage:hover { background: #96A58D; }
+.btn-sage:hover { background: #6F9486; }
 
 /* ── TAGLINE ─────────────────────────────────── */
 .tagline {

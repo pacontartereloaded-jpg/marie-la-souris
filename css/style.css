@@ -198,14 +198,6 @@ nav {
   margin-bottom: 1.7rem;
 }
 .hd { position: absolute; pointer-events: none; user-select: none; color: var(--pink); }
-.hero-botanical {
-  position: absolute;
-  right: calc(1.5% + clamp(160px,18vw,240px));
-  bottom: 20%;
-  width: 70px;
-  opacity: .45;
-  z-index: 4;
-}
 .hero-dots {
   position: absolute;
   bottom: 1rem;

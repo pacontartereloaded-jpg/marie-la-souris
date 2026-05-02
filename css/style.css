@@ -403,7 +403,7 @@ footer { background: var(--brown); color: var(--cream); padding: 3.5rem 2.5rem 2
 .hist-val { background: var(--cream); border-radius: 16px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; border: 1px solid rgba(74,55,40,.06); }
 .hist-val-icon { width: 78px; min-width: 78px; height: 86px; display: flex; align-items: center; justify-content: center; margin-top: -.2rem; }
 .hist-val-icon img { width: 70px; height: auto; object-fit: contain; }
-.hist-icon-branch img { width: 44px; }
+.hist-icon-branch img { width: 36px; }
 .hist-icon-heart svg { width: 68px; height: 68px; }
 .hist-icon-puzzle img { width: 58px; height: auto; transform: rotate(-10deg); }
 .hist-val-text h4 { font-family: 'Alice', serif; font-size: 1.05rem; font-weight: 600; color: var(--brown); margin-bottom: .25rem; }
